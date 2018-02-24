@@ -13,4 +13,6 @@ public abstract class PowerUp : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    abstract public void PowerUpEffect();
 }

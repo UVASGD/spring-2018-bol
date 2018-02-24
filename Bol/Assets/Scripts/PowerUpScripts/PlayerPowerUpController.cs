@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class PlayerPowerUpController : MonoBehaviour {
 
-    PowerUp storedPowerUp;
+    PowerUp storedPowerUp = null;
 
 	// Use this for initialization
 	void Start () {
-        storedPowerUp = null;
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+    public void UsePowerup()
+    {
+        if (storedPowerUp != null)
+        {
+            storedPowerUp.PowerUpEffect();
+            storedPowerUp = null;
+        }
+    }
+
+    public void AddPowerup()
+    {
+        if(storedPowerUp == null)
+        {
+
+        }
+    }
 }
