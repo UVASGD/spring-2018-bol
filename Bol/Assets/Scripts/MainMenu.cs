@@ -11,6 +11,8 @@ public class MainMenu : MonoBehaviour {
 	public Button mainButton;
 	public Button exitButton;
 
+	bool moving = false;
+
 	void Awake()
 	{
 		creditButton.onClick.AddListener(() => OnClickCredit());
@@ -20,15 +22,12 @@ public class MainMenu : MonoBehaviour {
 
 	void OnClickCredit()
 	{
-		// Seems to not rotate entirely if set at 90 degrees, 0.5s.
-		// Works at 180, 0.5s though.
-		// May need to change later, but not predicting specific issues. Yet.
-		StartCoroutine (rotateCamera (-180.0f, 0.5f));
+		if (!moving) StartCoroutine (rotateCamera (90.0f, 0.5f));
 	}
 
 	void OnClickMain()
 	{
-		StartCoroutine (rotateCamera (180.0f, 0.5f));
+		if (!moving) StartCoroutine (rotateCamera (-90.0f, 0.5f));
 	}
 
 	void OnClickExit(){
@@ -36,10 +35,12 @@ public class MainMenu : MonoBehaviour {
 	}
 
 	IEnumerator rotateCamera(float rotationAmt, float time) {
+		moving = true;
 		Quaternion initialRotation = eventCamera.transform.rotation;
 		for (float t = 0.0f; t <= time; t += Time.deltaTime) {
-			eventCamera.transform.rotation = Quaternion.Lerp (initialRotation, initialRotation * Quaternion.AngleAxis (rotationAmt, Vector3.up), t);
+			eventCamera.transform.rotation = Quaternion.Lerp (initialRotation, initialRotation * Quaternion.AngleAxis (rotationAmt, Vector3.up), t/time);
 			yield return null;
 		}
+		moving = false;
 	}
 }
