@@ -20,14 +20,15 @@ public class MainMenu : MonoBehaviour {
 
 	void OnClickCredit()
 	{
-		StartCoroutine (rotateCamera (90.0f, 2.0f));
-		eventCamera.transform.Rotate (new Vector3 (0, 90, 0));
+		// Seems to not rotate entirely if set at 90 degrees, 0.5s.
+		// Works at 180, 0.5s though.
+		// May need to change later, but not predicting specific issues. Yet.
+		StartCoroutine (rotateCamera (-180.0f, 0.5f));
 	}
 
 	void OnClickMain()
 	{
-		StartCoroutine (rotateCamera (-90.0f, 2.0f));
-		//eventCamera.transform.Rotate (new Vector3 (0, -90, 0));
+		StartCoroutine (rotateCamera (180.0f, 0.5f));
 	}
 
 	void OnClickExit(){
