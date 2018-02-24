@@ -4,45 +4,32 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour {
 
-	public float horizontal_angle {
-		get {
-			return horizontal_angle;
-		}
-		private set {
-			horizontal_angle = value;
-		}
+	[SerializeField]
+	public float horizontalAngle {
+		get; private set;
 	}
 
-	public float vertical_angle {
-		get {
-			return vertical_angle;
-		}
-		private set {
-			vertical_angle = value;
-		}
+	[SerializeField]
+	public float verticalAngle {
+		get; private set;
 	}
 
-	public float cur_power {
-		get {
-			return cur_power;
-		}
-		private set {
-			cur_power = value;
-		}
+	[SerializeField]
+	public float curPower {
+		get; private set;
 	}
 
+	[SerializeField]
 	public bool jump {
-		get {
-			return jump;
-		}
-		private set {
-			jump = value;
-		}
+		get; private set;
 	}
 
-	public float axis_deadzone = 0.1f;
-	public float power_increase = 0.1f;
-	public float max_power = 1.0f;
+	public float axisDeadzone = 0.1f;
+	public float powerIncrease = 0.1f;
+	public float angleIncrease = 1.0f;
+	public float maxPower = 1.0f;
+
+	bool powerIncreasing = true;
 
 	// Use this for initialization
 	void Start () {
@@ -53,14 +40,25 @@ public class PlayerInput : MonoBehaviour {
 	void Update () {
 		float horiz = Input.GetAxis("Horizontal");
 		float vert = Input.GetAxis("Vertical");
-		if (Mathf.Abs(horiz) > axis_deadzone) {
-			horizontal_angle += horiz;
+		if (Mathf.Abs(horiz) > axisDeadzone) {
+			horizontalAngle += horiz * angleIncrease;
 		}
-		if (Mathf.Abs(vert) > axis_deadzone) {
-			vertical_angle += vert;
+		if (Mathf.Abs(vert) > axisDeadzone) {
+			verticalAngle += vert * angleIncrease;
+			verticalAngle = Mathf.Clamp(verticalAngle, 0.0f, 89.0f);
+		}
+		if (Input.GetButtonDown("Jump")) {
+			curPower = 0.0f;
 		}
 		if (Input.GetButton("Jump")) {
-			cur_power = Mathf.Min((cur_power + (Time.deltaTime * power_increase)), max_power);
+			if (curPower >= maxPower && powerIncreasing) {
+				powerIncreasing = false;
+			}
+			if (curPower <= 0.0f && !powerIncreasing) {
+				powerIncreasing = true;
+			}
+			curPower += (Time.deltaTime * (powerIncreasing ? powerIncrease : -1 * powerIncrease));
+			curPower = Mathf.Clamp(curPower, 0.0f, maxPower);
 		}
 		if (Input.GetButtonUp("Jump")) {
 			jump = true;
