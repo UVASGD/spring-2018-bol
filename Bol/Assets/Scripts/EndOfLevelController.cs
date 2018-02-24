@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿//Warning: Not guaranteed to work if multiple players are moving at once
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class EndOfLevelController : MonoBehaviour {
 
+	private Coroutine stayDetect;
 	// Use this for initialization
 	void Start () {
 		
@@ -21,11 +23,26 @@ public class EndOfLevelController : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.name == "Player")
+		if (other.gameObject.tag == "Player")
 		{
-			print ("Info: End of level trigger");
-			//implement level transition here
-			//Destroy (this.gameObject);
+			print ("Info: Goal trigger enter");
+			stayDetect = StartCoroutine(CheckStay(other));
 		}
+	}
+	void OnTriggerExit(Collider other) {
+		if (other.gameObject.tag == "Player") {
+			print ("Info: Goal trigger cancel");
+			StopCoroutine(stayDetect);
+		}
+	}
+	private IEnumerator CheckStay(Collider other) {
+		yield return new WaitForSeconds(2);
+		PlayerStayed(other);
+
+	}
+	private void PlayerStayed(Collider other) {
+		print ("Info: Goal trigger activate");
+		//Remove the player object, activate a flag for that player having finished
+		//Destroy (this.gameObject);
 	}
 }
