@@ -22,13 +22,41 @@ public class PlayerPowerUpController : MonoBehaviour {
             storedPowerUp.PowerUpEffect();
             storedPowerUp = null;
         }
+        else
+        {
+            Debug.Log("NO POWERUP WTF U DOIN");
+        }
     }
 
-    public void AddPowerup()
+    public void AddPowerup(PowerUp newPowerUp)
     {
-        if(storedPowerUp == null)
+        if(storedPowerUp == null && newPowerUp != null)
         {
-
+            Debug.Log("ADDED NEW POWERUP");
+            storedPowerUp = newPowerUp;
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (ObjectIsPowerUp(other.gameObject))
+        {
+            Debug.Log("Collided with a powerup!");
+            PowerUpManager powerUpManager = other.GetComponent<PowerUpManager>();
+            AddPowerup(powerUpManager.GetPowerUp());
+            Destroy(other.gameObject);
+        }
+    }
+
+    bool ObjectIsPowerUp(GameObject obj)
+    {
+        // Check if the other object allows picking up of power ups.
+        if (obj.GetComponent<PowerUpManager>() == null)
+        {
+            return false;
+        }
+
+        // Allow object to take powerup
+        return true;
     }
 }
