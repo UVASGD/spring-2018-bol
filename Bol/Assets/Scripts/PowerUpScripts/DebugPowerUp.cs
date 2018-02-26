@@ -8,6 +8,11 @@ public class DebugPowerUp : PowerUp {
 	void Start () {
 		
 	}
+    // I dunno. This may only be necessary for the trivial do-nothing one.
+    public DebugPowerUp()
+    {
+        print("CONSTRUCTED A DEBUG POWERUP");;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -17,6 +22,5 @@ public class DebugPowerUp : PowerUp {
     public override void PowerUpEffect()
     {
         Debug.Log("DEBUG POWER UP! WOO!");
-        gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 1000, 0));
     }
 }

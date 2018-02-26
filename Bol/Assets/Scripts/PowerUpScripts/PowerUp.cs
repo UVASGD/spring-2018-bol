@@ -5,7 +5,10 @@ using UnityEngine;
 public abstract class PowerUp : MonoBehaviour {
 
     // This is a superclass. All powerups inherit from this class
+    public PowerUp()
+    {
 
+    }
 	// Use this for initialization
 	void Start () {
 		
