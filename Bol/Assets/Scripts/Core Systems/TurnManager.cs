@@ -9,6 +9,8 @@ public class TurnManager : MonoBehaviour {
 
 	int curPlayerIndex = 0;
 
+	public float minimumVelocity = 0.1f;
+
 	// Use this for initialization
 	void Start () {
 		foreach (GameObject player in players) {
@@ -21,16 +23,34 @@ public class TurnManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.T)) {
-			players[curPlayerIndex].GetComponent<PlayerInput>().enabled = false;
-			players[curPlayerIndex].GetComponent<PlayerControl>().enabled = false;
+		PlayerControl curPlayerControl = players[curPlayerIndex].GetComponent<PlayerControl>();
+		Rigidbody curPlayerRB = players[curPlayerIndex].GetComponent<Rigidbody>();
+		PlayerInput curPlayerInput = players[curPlayerIndex].GetComponent<PlayerInput>();
+        PlayerPowerUpController curPlayerPowerUp = players[curPlayerIndex].GetComponent<PlayerPowerUpController>();
+
+        // If the current player has been in flight long enough AND has less velocity than the minimum velocity
+        if (curPlayerControl.getPossibleTurnOver() && curPlayerRB.velocity.magnitude < minimumVelocity) {
+			curPlayerRB.velocity = Vector3.zero;
+
+			curPlayerInput.enabled = false;
+			curPlayerControl.enabled = false;
+			curPlayerControl.endTurn();
+
 			curPlayerIndex = (curPlayerIndex + 1) % players.Length ;
+
+			curPlayerControl = players[curPlayerIndex].GetComponent<PlayerControl>();
+			curPlayerRB = players[curPlayerIndex].GetComponent<Rigidbody>();
+			curPlayerInput = players[curPlayerIndex].GetComponent<PlayerInput>();
+
 			Camera.main.GetComponent<CameraFollowPlayer>().target = players[curPlayerIndex].transform;
-			players[curPlayerIndex].GetComponent<PlayerInput>().enabled = true;
-			players[curPlayerIndex].GetComponent<PlayerControl>().enabled = true;
-			inputController.curInput = players[curPlayerIndex].GetComponent<PlayerInput>();
-			inputController.curPlayer = players[curPlayerIndex].GetComponent<PlayerControl>();
-            inputController.curPowerup = players[curPlayerIndex].GetComponent<PlayerPowerUpController>();
+			Camera.main.GetComponent<CameraFollowPlayer>().ballLeaveFlight();
+
+			curPlayerInput.enabled = true;
+			curPlayerControl.enabled = true;
+
+			inputController.curInput = curPlayerInput;
+			inputController.curPlayer = curPlayerControl;
+            inputController.curPowerup = curPlayerPowerUp;
 		}
 	}
 }
