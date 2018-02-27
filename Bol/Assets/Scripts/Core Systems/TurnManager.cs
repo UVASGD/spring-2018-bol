@@ -30,6 +30,7 @@ public class TurnManager : MonoBehaviour {
 			players[curPlayerIndex].GetComponent<PlayerControl>().enabled = true;
 			inputController.curInput = players[curPlayerIndex].GetComponent<PlayerInput>();
 			inputController.curPlayer = players[curPlayerIndex].GetComponent<PlayerControl>();
+            inputController.curPowerup = players[curPlayerIndex].GetComponent<PlayerPowerUpController>();
 		}
 	}
 }
