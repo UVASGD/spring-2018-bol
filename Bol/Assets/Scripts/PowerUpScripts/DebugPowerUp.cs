@@ -6,12 +6,12 @@ public class DebugPowerUp : PowerUp {
 
 	// Use this for initialization
 	void Start () {
-		
+        //Debug.Log("DebugPowerUp Start() Called!");
 	}
     // I dunno. This may only be necessary for the trivial do-nothing one.
     public DebugPowerUp()
     {
-        print("CONSTRUCTED A DEBUG POWERUP");;
+        //Debug.Log("Debug Constructor Called!");
     }
 	
 	// Update is called once per frame

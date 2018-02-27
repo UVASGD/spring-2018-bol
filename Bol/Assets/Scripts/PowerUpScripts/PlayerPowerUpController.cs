@@ -32,7 +32,7 @@ public class PlayerPowerUpController : MonoBehaviour {
     {
         if(storedPowerUp == null && newPowerUp != null)
         {
-            Debug.Log("ADDED NEW POWERUP");
+            //Debug.Log("ADDED NEW POWERUP");
             storedPowerUp = newPowerUp;
         }
     }
@@ -41,7 +41,7 @@ public class PlayerPowerUpController : MonoBehaviour {
     {
         if (ObjectIsPowerUp(other.gameObject))
         {
-            Debug.Log("Collided with a powerup!");
+            //Debug.Log("Collided with a powerup!");
             PowerUpManager powerUpManager = other.GetComponent<PowerUpManager>();
             AddPowerup(powerUpManager.GetPowerUp());
             Destroy(other.gameObject);

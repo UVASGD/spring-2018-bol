@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PowerUp : MonoBehaviour {
+public abstract class PowerUp {
 
     // This is a superclass. All powerups inherit from this class
     public PowerUp()

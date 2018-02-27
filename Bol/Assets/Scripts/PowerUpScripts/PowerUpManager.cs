@@ -28,9 +28,9 @@ public class PowerUpManager : MonoBehaviour {
         switch (powerUpID)
         {
             case PowerUpList.Debug:
-                Debug.Log("CHOOSE THE DEBUG POWERUP");
+                //Debug.Log("Chose the Debug PowerUp!");
                 chosenPowerUp = new DebugPowerUp();
-                print("Chosen Power null? : " + (chosenPowerUp == null));
+                //print("Chosen Power null? : " + (chosenPowerUp == null));
                 break;
         }
         
