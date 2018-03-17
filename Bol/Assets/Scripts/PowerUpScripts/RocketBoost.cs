@@ -21,6 +21,11 @@ public class RocketBoost : PowerUp {
 
     public override void PowerUpEffect(GameObject player)
     {
-        
+        Rigidbody rb = player.GetComponent<Rigidbody>();
+        Vector3 newVelocity = rb.velocity;
+        newVelocity.y = 0;
+        newVelocity *= 50.0f;
+        rb.velocity = newVelocity;
+        Debug.Log("ZOOOOOM");
     }
 }
