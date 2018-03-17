@@ -19,5 +19,5 @@ public abstract class PowerUp {
 		
 	}
 
-    abstract public void PowerUpEffect();
+    abstract public void PowerUpEffect(GameObject player);
 }
