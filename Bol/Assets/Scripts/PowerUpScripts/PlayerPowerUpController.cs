@@ -15,7 +15,7 @@ public class PlayerPowerUpController : MonoBehaviour {
 	void Update () {
 		
 	}
-    public void UsePowerup()
+    public void UsePowerUp()
     {
         if (storedPowerUp != null)
         {
