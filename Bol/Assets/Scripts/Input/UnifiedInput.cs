@@ -19,9 +19,9 @@ public class UnifiedInput : MonoBehaviour {
 			Camera.main.GetComponent<CameraFollowPlayer>().ballEnterFlight();
 			curPlayer.LaunchInDirection(calculateDirectionVector(), curInput.curPower);
 		}
-        if (curInput.GetPowerup())
+        if (curInput.GetPowerUp())
         {
-            curPowerup.UsePowerup();
+            curPowerup.UsePowerUp();
         }
 	}
 
