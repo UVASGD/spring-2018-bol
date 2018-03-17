@@ -17,6 +17,8 @@ public class BrakePowerUp : PowerUp {
 
 	public override void PowerUpEffect(GameObject player){
 		Rigidbody playerAtt = player.GetComponent<Rigidbody>();
-		Debug.Log (playerAtt.velocity);
+		// Hard stops horizontal-scale movement. Vertical velocity is unaffected.
+		Vector3 zeroMomentum = new Vector3 (0, playerAtt.velocity.y, 0);
+		playerAtt.velocity = zeroMomentum;
 	}
 }
