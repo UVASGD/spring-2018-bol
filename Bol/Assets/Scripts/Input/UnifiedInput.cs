@@ -6,6 +6,7 @@ public class UnifiedInput : MonoBehaviour {
 
 	public PlayerInput curInput;
 	public PlayerControl curPlayer;
+    public PlayerPowerUpController curPowerup;
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +19,10 @@ public class UnifiedInput : MonoBehaviour {
 			Camera.main.GetComponent<CameraFollowPlayer>().ballEnterFlight();
 			curPlayer.LaunchInDirection(calculateDirectionVector(), curInput.curPower);
 		}
+        if (curInput.GetPowerup())
+        {
+            curPowerup.UsePowerup();
+        }
 	}
 
 	Vector3 calculateDirectionVector() {

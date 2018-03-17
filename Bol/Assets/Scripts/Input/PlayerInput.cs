@@ -24,6 +24,8 @@ public class PlayerInput : MonoBehaviour {
 		get; private set;
 	}
 
+    public bool powerup;
+
 	public float axisDeadzone = 0.1f;
 	public float powerIncrease = 0.1f;
 	public float angleIncrease = 1.0f;
@@ -63,6 +65,10 @@ public class PlayerInput : MonoBehaviour {
 		if (Input.GetButtonUp("Jump")) {
 			jump = true;
 		}
+        if (Input.GetButtonDown("UsePowerup"))
+        {
+            powerup = true;
+        }
 	}
 
 	public bool GetJump() {
@@ -72,4 +78,14 @@ public class PlayerInput : MonoBehaviour {
 		}
 		return false;
 	}
+
+    public bool GetPowerup()
+    {
+        if (powerup)
+        {
+            powerup = false;
+            return true;
+        }
+        return false;
+    }
 }

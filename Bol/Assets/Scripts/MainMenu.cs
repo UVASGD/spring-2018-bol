@@ -7,27 +7,38 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour {
 
 	public Camera eventCamera;
+
+	public Button playButton;
+
+	public Button helpButton;
+	public Button mainButtonFromHelp;
+
 	public Button creditButton;
-	public Button mainButton;
+	public Button mainButtonFromCredit;
+
 	public Button exitButton;
+
+	bool moving = false;
 
 	void Awake()
 	{
+		helpButton.onClick.AddListener (() => OnClickMain ());
+		mainButtonFromHelp.onClick.AddListener (() => OnClickCredit ());
+
 		creditButton.onClick.AddListener(() => OnClickCredit());
-		mainButton.onClick.AddListener (() => OnClickMain ());
+		mainButtonFromCredit.onClick.AddListener (() => OnClickMain ());
+
 		exitButton.onClick.AddListener(() => OnClickExit());
 	}
 
 	void OnClickCredit()
 	{
-		StartCoroutine (rotateCamera (90.0f, 2.0f));
-		eventCamera.transform.Rotate (new Vector3 (0, 90, 0));
+		if (!moving) StartCoroutine (rotateCamera (90.0f, 0.25f));
 	}
 
 	void OnClickMain()
 	{
-		StartCoroutine (rotateCamera (-90.0f, 2.0f));
-		//eventCamera.transform.Rotate (new Vector3 (0, -90, 0));
+		if (!moving) StartCoroutine (rotateCamera (-90.0f, 0.25f));
 	}
 
 	void OnClickExit(){
@@ -35,10 +46,12 @@ public class MainMenu : MonoBehaviour {
 	}
 
 	IEnumerator rotateCamera(float rotationAmt, float time) {
+		moving = true;
 		Quaternion initialRotation = eventCamera.transform.rotation;
 		for (float t = 0.0f; t <= time; t += Time.deltaTime) {
-			eventCamera.transform.rotation = Quaternion.Lerp (initialRotation, initialRotation * Quaternion.AngleAxis (rotationAmt, Vector3.up), t);
+			eventCamera.transform.rotation = Quaternion.Lerp (initialRotation, initialRotation * Quaternion.AngleAxis (rotationAmt, Vector3.up), t/time);
 			yield return null;
 		}
+		moving = false;
 	}
 }

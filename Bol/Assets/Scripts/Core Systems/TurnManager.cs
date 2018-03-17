@@ -26,9 +26,10 @@ public class TurnManager : MonoBehaviour {
 		PlayerControl curPlayerControl = players[curPlayerIndex].GetComponent<PlayerControl>();
 		Rigidbody curPlayerRB = players[curPlayerIndex].GetComponent<Rigidbody>();
 		PlayerInput curPlayerInput = players[curPlayerIndex].GetComponent<PlayerInput>();
+        PlayerPowerUpController curPlayerPowerUp = players[curPlayerIndex].GetComponent<PlayerPowerUpController>();
 
-		// If the current player has been in flight long enough AND has less velocity than the minimum velocity
-		if (curPlayerControl.getPossibleTurnOver() && curPlayerRB.velocity.magnitude < minimumVelocity) {
+        // If the current player has been in flight long enough AND has less velocity than the minimum velocity
+        if (curPlayerControl.getPossibleTurnOver() && curPlayerRB.velocity.magnitude < minimumVelocity) {
 			curPlayerRB.velocity = Vector3.zero;
 
 			curPlayerInput.enabled = false;
@@ -49,6 +50,7 @@ public class TurnManager : MonoBehaviour {
 
 			inputController.curInput = curPlayerInput;
 			inputController.curPlayer = curPlayerControl;
+            inputController.curPowerup = curPlayerPowerUp;
 		}
 	}
 }
