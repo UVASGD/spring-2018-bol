@@ -8,7 +8,7 @@ public class PowerUpManager : MonoBehaviour {
     // Put on powerups!
 	// Use this for initialization
 	// Add new Powerups Here (pt. 1 of 2)
-    public enum PowerUpList { RANDOM = -1, Debug}
+    public enum PowerUpList { RANDOM = -1, Debug, Brake}
 	void Start () {
 		
 	}
@@ -34,6 +34,9 @@ public class PowerUpManager : MonoBehaviour {
                 chosenPowerUp = new DebugPowerUp();
                 //print("Chosen Power null? : " + (chosenPowerUp == null));
                 break;
+			case PowerUpList.Brake:
+				chosenPowerUp = new BrakePowerUp ();
+				break;
         }
         
         return chosenPowerUp;

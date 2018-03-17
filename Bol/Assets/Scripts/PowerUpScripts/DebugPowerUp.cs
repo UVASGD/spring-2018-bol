@@ -19,7 +19,7 @@ public class DebugPowerUp : PowerUp {
 		
 	}
 
-    public override void PowerUpEffect(GameObject player)
+	public override void PowerUpEffect(GameObject player)
     {
         Debug.Log("DEBUG POWER UP! WOO!");
     }
