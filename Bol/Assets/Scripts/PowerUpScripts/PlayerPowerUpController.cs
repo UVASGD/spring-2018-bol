@@ -19,7 +19,7 @@ public class PlayerPowerUpController : MonoBehaviour {
     {
         if (storedPowerUp != null)
         {
-            storedPowerUp.PowerUpEffect();
+            storedPowerUp.PowerUpEffect(gameObject);
             storedPowerUp = null;
         }
         else

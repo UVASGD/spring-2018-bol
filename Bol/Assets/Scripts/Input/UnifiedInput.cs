@@ -21,7 +21,7 @@ public class UnifiedInput : MonoBehaviour {
 		}
         if (curInput.GetPowerUp())
         {
-            curPowerup.UsePowerUp();
+            curPowerup.UsePowerUp(gameObject);
         }
 	}
 
