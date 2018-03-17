@@ -8,8 +8,8 @@ public class RocketBoost : PowerUp {
 	void Start () {
 		
 	}
-	
-    public RocketBoost()
+
+    public RocketBoost(GameObject player) : base(player)
     {
 
     }
@@ -19,12 +19,14 @@ public class RocketBoost : PowerUp {
 		
 	}
 
-    public override void PowerUpEffect(GameObject player)
+
+    public override void PowerUpEffect()
     {
         Rigidbody rb = player.GetComponent<Rigidbody>();
         Vector3 newVelocity = rb.velocity;
         newVelocity.y = 0;
-        newVelocity *= 50.0f;
+        newVelocity.Normalize();
+        newVelocity *= 50;
         rb.velocity = newVelocity;
         Debug.Log("ZOOOOOM");
     }

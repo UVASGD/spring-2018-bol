@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class BrakePowerUp : PowerUp {
 
+    public BrakePowerUp(GameObject player) : base(player)
+    {
 
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -15,7 +18,7 @@ public class BrakePowerUp : PowerUp {
 		
 	}
 
-	public override void PowerUpEffect(GameObject player){
+	public override void PowerUpEffect(){
 		Rigidbody playerAtt = player.GetComponent<Rigidbody>();
 		// Hard stops horizontal-scale movement. Vertical velocity is unaffected.
 		Vector3 zeroMomentum = new Vector3 (0, playerAtt.velocity.y, 0);

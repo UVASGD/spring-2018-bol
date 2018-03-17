@@ -31,11 +31,11 @@ public class PowerUpManager : MonoBehaviour {
         {
             case PowerUpList.RocketBoost:
                 //Debug.Log("Chose the Debug PowerUp!");
-                chosenPowerUp = new RocketBoost();
+                chosenPowerUp = new RocketBoost(gameObject);
                 //print("Chosen Power null? : " + (chosenPowerUp == null));
                 break;
 			case PowerUpList.Brake:
-				chosenPowerUp = new BrakePowerUp ();
+				chosenPowerUp = new BrakePowerUp (gameObject);
 				break;
         }
         
