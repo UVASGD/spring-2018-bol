@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class BrakePowerUp : PowerUp {
 
+
+
 	// Use this for initialization
 	void Start () {
-		Debug.Log ("PowerUpEffect activated or some shit");
-	}
-
-	public BrakePowerUp(){
-	
 	}
 	
 	// Update is called once per frame
@@ -18,7 +15,8 @@ public class BrakePowerUp : PowerUp {
 		
 	}
 
-	public override void PowerUpEffect(){
-		Debug.Log ("PowerUpEffect activated or some shit");
+	public override void PowerUpEffect(GameObject player){
+		Rigidbody playerAtt = player.GetComponent<Rigidbody>();
+		Debug.Log (playerAtt.velocity);
 	}
 }

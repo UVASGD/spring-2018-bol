@@ -19,7 +19,7 @@ public class RocketBoost : PowerUp {
 		
 	}
 
-    public override void PowerUpEffect()
+    public override void PowerUpEffect(GameObject player)
     {
         
     }
