@@ -7,7 +7,8 @@ public class PowerUpManager : MonoBehaviour {
 
     // Put on powerups!
 	// Use this for initialization
-    public enum PowerUpList { RANDOM = -1, Debug}
+	// Add new Powerups Here (pt. 1 of 2)
+    public enum PowerUpList { RANDOM = -1, RocketBoost, Brake, MoonJump }
 	void Start () {
 		
 	}
@@ -25,12 +26,19 @@ public class PowerUpManager : MonoBehaviour {
             powerUpID = (PowerUpList)UnityEngine.Random.Range(0, values.Length-1);
         }
         PowerUp chosenPowerUp = null;
+	    // Add new Powerups here (pt 2 of 2)
         switch (powerUpID)
         {
-            case PowerUpList.Debug:
+            case PowerUpList.RocketBoost:
                 //Debug.Log("Chose the Debug PowerUp!");
-                chosenPowerUp = new DebugPowerUp();
+                chosenPowerUp = new RocketBoost(gameObject);
                 //print("Chosen Power null? : " + (chosenPowerUp == null));
+                break;
+			case PowerUpList.Brake:
+				chosenPowerUp = new BrakePowerUp (gameObject);
+				break;
+            case PowerUpList.MoonJump:
+                chosenPowerUp = new MoonJump();
                 break;
         }
         
