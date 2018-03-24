@@ -49,9 +49,8 @@ public class PlayerPowerUpController : MonoBehaviour {
     {
         if(storedPowerUp == null && newPowerUp != null)
         {
-            //Debug.Log("ADDED NEW POWERUP");
+            Debug.Log("ADDED NEW POWERUP");
             storedPowerUp = newPowerUp;
-            timeLeft = storedPowerUp.Duration;
         }
     }
 

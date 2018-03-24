@@ -5,7 +5,6 @@ using UnityEngine;
 public abstract class PowerUp {
 
     protected GameObject player;
-    protected int duration;
     protected bool endsOnTurn;
 
     public bool EndsOnTurn
@@ -21,24 +20,11 @@ public abstract class PowerUp {
         }
     }
 
-    public int Duration
-    {
-        get
-        {
-            return duration;
-        }
-
-        set
-        {
-            duration = value;
-        }
-    }
 
     // This is a superclass. All powerups inherit from this class
-    public PowerUp(GameObject player, int duration = 0)
+    public PowerUp(GameObject player)
     {
         this.player = player;
-        this.Duration = duration;
     }
 	// Use this for initialization
 	void Start () {
@@ -53,7 +39,7 @@ public abstract class PowerUp {
 
     abstract public void PowerUpEffect();
 
-    public void UndoEffect() {
-
+    public virtual void UndoEffect() {
+        Debug.Log("The Called Powerup does not have an undo effect.");
     }
 }
