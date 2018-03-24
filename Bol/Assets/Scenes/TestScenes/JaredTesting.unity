@@ -489,7 +489,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4481377647141578, guid: 75f08bf236690b743874006fb1d34214, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -5.5884852
+      value: -5.67
       objectReference: {fileID: 0}
     - target: {fileID: 4481377647141578, guid: 75f08bf236690b743874006fb1d34214, type: 2}
       propertyPath: m_RootOrder
@@ -499,6 +499,11 @@ Prefab:
         type: 2}
       propertyPath: powerUpID
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 23554661026013056, guid: 75f08bf236690b743874006fb1d34214,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 75f08bf236690b743874006fb1d34214, type: 2}

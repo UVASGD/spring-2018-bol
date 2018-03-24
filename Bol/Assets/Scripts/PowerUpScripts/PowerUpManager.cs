@@ -18,6 +18,12 @@ public class PowerUpManager : MonoBehaviour {
 		
 	}
 
+    public void Respawn()
+    {
+        gameObject.GetComponent<MeshRenderer>().enabled = true;
+        gameObject.GetComponent<Collider>().enabled = true;
+    }
+
     public PowerUp GetPowerUp()
     {
         if(powerUpID == PowerUpList.RANDOM)
@@ -41,7 +47,8 @@ public class PowerUpManager : MonoBehaviour {
                 chosenPowerUp = new MoonJump();
                 break;
         }
-        
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        gameObject.GetComponent<Collider>().enabled = false;
         return chosenPowerUp;
     }
 }
