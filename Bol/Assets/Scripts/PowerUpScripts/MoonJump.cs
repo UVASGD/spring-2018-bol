@@ -9,7 +9,7 @@ public class MoonJump : PowerUp
         Debug.Log("MoonJump activated");
     }
 
-    public MoonJump(GameObject player) : base(player){
+    public MoonJump(){
         
     }
 

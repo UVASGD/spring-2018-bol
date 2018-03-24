@@ -9,7 +9,7 @@ public class DebugPowerUp : PowerUp {
         //Debug.Log("DebugPowerUp Start() Called!");
 	}
     // I dunno. This may only be necessary for the trivial do-nothing one.
-    public DebugPowerUp(GameObject player) : base(player)
+    public DebugPowerUp()
     {
         //Debug.Log("Debug Constructor Called!");
     }
