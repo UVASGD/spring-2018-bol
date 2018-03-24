@@ -9,12 +9,14 @@ public class MoonJump : PowerUp
         Debug.Log("MoonJump activated");
     }
 
-    public MoonJump() { }
+    public MoonJump(GameObject player) : base(player){
+
+    }
 
     // Update is called once per frame
     void Update() { }
 
-    public override void PowerUpEffect(GameObject player)
+    public override void PowerUpEffect()
     {
         Debug.Log("MoonJump PowerUpEffect activated");
         Rigidbody playerAtt = player.GetComponent<Rigidbody>();

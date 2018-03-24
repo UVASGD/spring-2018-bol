@@ -6,18 +6,18 @@ public abstract class PowerUp {
 
     protected GameObject player;
     protected int duration;
-    protected bool hasTimer;
+    protected bool endsOnTurn;
 
-    public bool HasTimer
+    public bool EndsOnTurn
     {
         get
         {
-            return hasTimer;
+            return endsOnTurn;
         }
 
         set
         {
-            hasTimer = value;
+            endsOnTurn = value;
         }
     }
 

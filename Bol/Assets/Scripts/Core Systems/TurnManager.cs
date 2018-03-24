@@ -58,6 +58,7 @@ public class TurnManager : MonoBehaviour {
 
 		curPlayerInput.enabled = true;
 		curPlayerControl.enabled = true;
+        curPlayerPowerUp.EndTurn();
 
 		inputController.curInput = curPlayerInput;
 		inputController.curPlayer = curPlayerControl;

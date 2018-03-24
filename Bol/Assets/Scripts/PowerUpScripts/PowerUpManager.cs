@@ -38,7 +38,7 @@ public class PowerUpManager : MonoBehaviour {
 				chosenPowerUp = new BrakePowerUp (gameObject);
 				break;
             case PowerUpList.MoonJump:
-                chosenPowerUp = new MoonJump();
+                chosenPowerUp = new MoonJump(gameObject);
                 break;
         }
         
