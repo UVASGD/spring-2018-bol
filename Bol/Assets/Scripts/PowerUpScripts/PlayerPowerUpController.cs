@@ -5,31 +5,17 @@ using UnityEngine;
 public class PlayerPowerUpController : MonoBehaviour {
 
     PowerUp storedPowerUp = null;
-    float timeLeft;
 
 	// Use this for initialization
 	void Start () {
 
 	}
-
-    private void Timer()
-    {
-        timeLeft -= Time.deltaTime;
-        if (timeLeft < 0.05)
-        {
-            storedPowerUp.UndoEffect();
-            storedPowerUp = null;
-        }
-    }
 	
 	// Update is called once per frame
 	void Update () {
-		if(storedPowerUp != null && storedPowerUp.EndsOnTurn)
-        {
-            Timer();
-        }
+		
 	}
-    public void UsePowerUp()
+    public void UsePowerup()
     {
         if (storedPowerUp != null)
         {
@@ -51,7 +37,6 @@ public class PlayerPowerUpController : MonoBehaviour {
         {
             //Debug.Log("ADDED NEW POWERUP");
             storedPowerUp = newPowerUp;
-            timeLeft = storedPowerUp.Duration;
         }
     }
 

@@ -168,7 +168,7 @@ MonoBehaviour:
   - {fileID: 796666730}
   - {fileID: 1869377211}
   inputController: {fileID: 1602578825}
-  minimumVelocity: 1
+  minimumVelocity: 0.5
 --- !u!4 &649039260
 Transform:
   m_ObjectHideFlags: 0

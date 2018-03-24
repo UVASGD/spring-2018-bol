@@ -11,8 +11,6 @@ public class TurnManager : MonoBehaviour {
 
 	public float minimumVelocity = 0.1f;
 
-	bool switching = false;
-
 	// Use this for initialization
 	void Start () {
 		foreach (GameObject player in players) {
@@ -31,30 +29,24 @@ public class TurnManager : MonoBehaviour {
         PlayerPowerUpController curPlayerPowerUp = players[curPlayerIndex].GetComponent<PlayerPowerUpController>();
 
         // If the current player has been in flight long enough AND has less velocity than the minimum velocity
-        if (curPlayerControl.getPossibleTurnOver() && curPlayerRB.velocity.magnitude < minimumVelocity && !switching) {
-			StartCoroutine(switchTurn(curPlayerControl, curPlayerRB, curPlayerInput, curPlayerPowerUp));
-		}
-	}
+        if (curPlayerControl.getPossibleTurnOver() && curPlayerRB.velocity.magnitude < minimumVelocity) {
+			curPlayerRB.velocity = Vector3.zero;
 
-	IEnumerator switchTurn(PlayerControl curPlayerControl, Rigidbody curPlayerRB, PlayerInput curPlayerInput, PlayerPowerUpController curPlayerPowerUp) {
-		switching = true;
-		Debug.Log("Waiting...");
-		yield return new WaitForSeconds(1);
-		Debug.Log("Waiting done!");
-		curPlayerRB.velocity = Vector3.zero;
+			curPlayerInput.enabled = false;
+			curPlayerControl.enabled = false;
+			curPlayerControl.endTurn();
 
-		curPlayerInput.enabled = false;
-		curPlayerControl.enabled = false;
-		curPlayerControl.endTurn();
+			curPlayerIndex = (curPlayerIndex + 1) % players.Length ;
 
-		curPlayerIndex = (curPlayerIndex + 1) % players.Length ;
+			curPlayerControl = players[curPlayerIndex].GetComponent<PlayerControl>();
+			curPlayerRB = players[curPlayerIndex].GetComponent<Rigidbody>();
+			curPlayerInput = players[curPlayerIndex].GetComponent<PlayerInput>();
 
-		curPlayerControl = players[curPlayerIndex].GetComponent<PlayerControl>();
-		curPlayerRB = players[curPlayerIndex].GetComponent<Rigidbody>();
-		curPlayerInput = players[curPlayerIndex].GetComponent<PlayerInput>();
+			Camera.main.GetComponent<CameraFollowPlayer>().target = players[curPlayerIndex].transform;
+			Camera.main.GetComponent<CameraFollowPlayer>().ballLeaveFlight();
 
-		Camera.main.GetComponent<CameraFollowPlayer>().target = players[curPlayerIndex].transform;
-		Camera.main.GetComponent<CameraFollowPlayer>().ballLeaveFlight();
+			curPlayerInput.enabled = true;
+			curPlayerControl.enabled = true;
 
 		curPlayerInput.enabled = true;
 		curPlayerControl.enabled = true;

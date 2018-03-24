@@ -7,38 +7,27 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour {
 
 	public Camera eventCamera;
-
-	public Button playButton;
-
-	public Button helpButton;
-	public Button mainButtonFromHelp;
-
 	public Button creditButton;
-	public Button mainButtonFromCredit;
-
+	public Button mainButton;
 	public Button exitButton;
 
 	bool moving = false;
 
 	void Awake()
 	{
-		helpButton.onClick.AddListener (() => OnClickMain ());
-		mainButtonFromHelp.onClick.AddListener (() => OnClickCredit ());
-
 		creditButton.onClick.AddListener(() => OnClickCredit());
-		mainButtonFromCredit.onClick.AddListener (() => OnClickMain ());
-
+		mainButton.onClick.AddListener (() => OnClickMain ());
 		exitButton.onClick.AddListener(() => OnClickExit());
 	}
 
 	void OnClickCredit()
 	{
-		if (!moving) StartCoroutine (rotateCamera (90.0f, 0.25f));
+		if (!moving) StartCoroutine (rotateCamera (90.0f, 0.5f));
 	}
 
 	void OnClickMain()
 	{
-		if (!moving) StartCoroutine (rotateCamera (-90.0f, 0.25f));
+		if (!moving) StartCoroutine (rotateCamera (-90.0f, 0.5f));
 	}
 
 	void OnClickExit(){
