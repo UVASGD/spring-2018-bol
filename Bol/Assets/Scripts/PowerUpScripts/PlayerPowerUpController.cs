@@ -70,7 +70,7 @@ public class PlayerPowerUpController : MonoBehaviour {
             //Debug.Log("Collided with a powerup!");
             PowerUpManager powerUpManager = other.GetComponent<PowerUpManager>();
             AddPowerup(powerUpManager.GetPowerUp());
-            Destroy(other.gameObject);
+            other.enabled = false;
         }
     }
 
