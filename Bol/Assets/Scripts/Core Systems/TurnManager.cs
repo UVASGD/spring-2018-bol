@@ -13,7 +13,9 @@ public class TurnManager : MonoBehaviour {
 
 	bool switching = false;
 
-	// Use this for initialization
+    private GameObject[] powerUps;
+    
+    // Use this for initialization
 	void Start () {
 		foreach (GameObject player in players) {
 			if (player.GetComponent<PlayerInput>() == null || player.GetComponent<PlayerControl>() == null) {
@@ -21,6 +23,7 @@ public class TurnManager : MonoBehaviour {
 				Debug.Break();
 			}
 		}
+        powerUps = GameObject.FindGameObjectsWithTag("PowerUp");
 	}
 	
 	// Update is called once per frame
@@ -59,6 +62,12 @@ public class TurnManager : MonoBehaviour {
 		curPlayerInput.enabled = true;
 		curPlayerControl.enabled = true;
         curPlayerPowerUp.EndTurn();
+
+        // There might be a better way to do this...
+        foreach(GameObject powerUp in powerUps)
+        {
+            powerUp.GetComponent<PowerUpManager>().Respawn();
+        }
 
 		inputController.curInput = curPlayerInput;
 		inputController.curPlayer = curPlayerControl;
