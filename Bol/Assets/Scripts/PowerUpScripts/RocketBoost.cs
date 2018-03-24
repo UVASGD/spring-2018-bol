@@ -9,7 +9,7 @@ public class RocketBoost : PowerUp {
 		
 	}
 
-    public RocketBoost(GameObject player) : base(player)
+    public RocketBoost()
     {
 
     }

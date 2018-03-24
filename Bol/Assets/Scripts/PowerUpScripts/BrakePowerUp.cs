@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BrakePowerUp : PowerUp {
 
-    public BrakePowerUp(GameObject player) : base(player)
+    public BrakePowerUp()
     {
 
     }

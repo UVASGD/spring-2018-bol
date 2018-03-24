@@ -20,11 +20,24 @@ public abstract class PowerUp {
         }
     }
 
+    public GameObject Player
+    {
+        get
+        {
+            return player;
+        }
+
+        set
+        {
+            player = value;
+        }
+    }
+
 
     // This is a superclass. All powerups inherit from this class
-    public PowerUp(GameObject player)
+    public PowerUp()
     {
-        this.player = player;
+        
     }
 	// Use this for initialization
 	void Start () {
