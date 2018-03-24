@@ -168,7 +168,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 7d53c5c6ef96b1d4ab460366aeba24d2, type: 3}
+    m_Font: {fileID: 12800000, guid: 596ba36adae1c1b4a95c9c5a8ee2aeae, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -250,7 +250,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 7d53c5c6ef96b1d4ab460366aeba24d2, type: 3}
+    m_Font: {fileID: 12800000, guid: 596ba36adae1c1b4a95c9c5a8ee2aeae, type: 3}
     m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
@@ -262,7 +262,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "How to B\xF6l"
+  m_Text: "How to B\xF6L"
 --- !u!222 &162658004
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -405,7 +405,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: ebb1e756a48a09b4c811d43737955a8c, type: 3}
+    m_Font: {fileID: 12800000, guid: 596ba36adae1c1b4a95c9c5a8ee2aeae, type: 3}
     m_FontSize: 80
     m_FontStyle: 0
     m_BestFit: 0
@@ -594,7 +594,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 7d53c5c6ef96b1d4ab460366aeba24d2, type: 3}
+    m_Font: {fileID: 12800000, guid: 596ba36adae1c1b4a95c9c5a8ee2aeae, type: 3}
     m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
@@ -606,7 +606,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "B\xF6l Credits"
+  m_Text: "B\xF6L Credits"
 --- !u!222 &802945253
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -817,7 +817,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 7d53c5c6ef96b1d4ab460366aeba24d2, type: 3}
+    m_Font: {fileID: 12800000, guid: 596ba36adae1c1b4a95c9c5a8ee2aeae, type: 3}
     m_FontSize: 9
     m_FontStyle: 0
     m_BestFit: 0
@@ -893,7 +893,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: ebb1e756a48a09b4c811d43737955a8c, type: 3}
+    m_Font: {fileID: 12800000, guid: 596ba36adae1c1b4a95c9c5a8ee2aeae, type: 3}
     m_FontSize: 88
     m_FontStyle: 0
     m_BestFit: 0
@@ -905,7 +905,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "B\xF6l"
+  m_Text: "B\xF6L"
 --- !u!222 &1045871478
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -967,7 +967,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 7d53c5c6ef96b1d4ab460366aeba24d2, type: 3}
+    m_Font: {fileID: 12800000, guid: 596ba36adae1c1b4a95c9c5a8ee2aeae, type: 3}
     m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
@@ -1041,7 +1041,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 7d53c5c6ef96b1d4ab460366aeba24d2, type: 3}
+    m_Font: {fileID: 12800000, guid: 596ba36adae1c1b4a95c9c5a8ee2aeae, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -1117,7 +1117,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: ebb1e756a48a09b4c811d43737955a8c, type: 3}
+    m_Font: {fileID: 12800000, guid: 596ba36adae1c1b4a95c9c5a8ee2aeae, type: 3}
     m_FontSize: 88
     m_FontStyle: 0
     m_BestFit: 0
@@ -1129,7 +1129,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "How to B\xF6l"
+  m_Text: "How to B\xF6L"
 --- !u!222 &1203678349
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1340,7 +1340,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 7d53c5c6ef96b1d4ab460366aeba24d2, type: 3}
+    m_Font: {fileID: 12800000, guid: 596ba36adae1c1b4a95c9c5a8ee2aeae, type: 3}
     m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
@@ -1587,7 +1587,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 7d53c5c6ef96b1d4ab460366aeba24d2, type: 3}
+    m_Font: {fileID: 12800000, guid: 596ba36adae1c1b4a95c9c5a8ee2aeae, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
