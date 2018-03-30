@@ -12,8 +12,11 @@ public class TurnManager : MonoBehaviour {
 	public float minimumVelocity = 0.1f;
 
 	bool switching = false;
+	bool confirming = false;
 
     private GameObject[] powerUps;
+
+	const int WAIT_TIME = 3;
     
     // Use this for initialization
 	void Start () {
@@ -24,26 +27,38 @@ public class TurnManager : MonoBehaviour {
 			}
 		}
         powerUps = GameObject.FindGameObjectsWithTag("PowerUp");
+		StartCoroutine(checkTurnSwitch());
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		PlayerControl curPlayerControl = players[curPlayerIndex].GetComponent<PlayerControl>();
-		Rigidbody curPlayerRB = players[curPlayerIndex].GetComponent<Rigidbody>();
-		PlayerInput curPlayerInput = players[curPlayerIndex].GetComponent<PlayerInput>();
-        PlayerPowerUpController curPlayerPowerUp = players[curPlayerIndex].GetComponent<PlayerPowerUpController>();
+		
+	}
 
-        // If the current player has been in flight long enough AND has less velocity than the minimum velocity
-        if (curPlayerControl.getPossibleTurnOver() && curPlayerRB.velocity.magnitude < minimumVelocity && !switching) {
-			StartCoroutine(switchTurn(curPlayerControl, curPlayerRB, curPlayerInput, curPlayerPowerUp));
+	IEnumerator checkTurnSwitch() {
+		while (gameObject.activeInHierarchy) {
+			PlayerControl curPlayerControl = players[curPlayerIndex].GetComponent<PlayerControl>();
+			Rigidbody curPlayerRB = players[curPlayerIndex].GetComponent<Rigidbody>();
+			PlayerInput curPlayerInput = players[curPlayerIndex].GetComponent<PlayerInput>();
+			PlayerPowerUpController curPlayerPowerUp = players[curPlayerIndex].GetComponent<PlayerPowerUpController>();
+			if (curPlayerControl.getPossibleTurnOver() && curPlayerRB.velocity.magnitude < minimumVelocity && !switching) {
+				StartCoroutine(switchTurn(curPlayerControl, curPlayerRB, curPlayerInput, curPlayerPowerUp));
+			} else {
+				confirming = false; // The player is moving, so we are no longer confirmed.
+			}
+			yield return new WaitForSeconds(WAIT_TIME);
 		}
 	}
 
 	IEnumerator switchTurn(PlayerControl curPlayerControl, Rigidbody curPlayerRB, PlayerInput curPlayerInput, PlayerPowerUpController curPlayerPowerUp) {
+		if (!confirming) {
+			confirming = true; // We are currently confirming!
+			Debug.Log("Confirming!");
+			yield break;
+		}
+		// If we make it here, the player has been stationary for WAIT_TIME seconds!
+		Debug.Log("Confirmed!");
 		switching = true;
-		Debug.Log("Waiting...");
-		yield return new WaitForSeconds(1);
-		Debug.Log("Waiting done!");
 		curPlayerRB.velocity = Vector3.zero;
 
 		curPlayerInput.enabled = false;
@@ -73,5 +88,6 @@ public class TurnManager : MonoBehaviour {
 		inputController.curPlayer = curPlayerControl;
 		inputController.curPowerup = curPlayerPowerUp;
 		switching = false;
+		confirming = false;
 	}
 }
