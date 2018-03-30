@@ -36,7 +36,7 @@ public class EndOfLevelController : MonoBehaviour {
 		}
 	}
 	private IEnumerator CheckStay(Collider other) {
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(1);
 		PlayerStayed(other);
 
 	}
