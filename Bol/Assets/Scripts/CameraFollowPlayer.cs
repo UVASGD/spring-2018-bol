@@ -29,6 +29,8 @@ public class CameraFollowPlayer : MonoBehaviour {
 			Vector3 ballToCam = myTransform.position - target.position;
 			StartCoroutine(moveBack(target.position, (ballToCam.magnitude - minimumDistance)*1.5f, desiredAngle - Mathf.Asin(ballToCam.y/ballToCam.magnitude)*Mathf.Rad2Deg));
 		}
+		float rotatey = Input.GetAxis("CameraRotate");
+		Camera.main.transform.RotateAround(target.position, Vector3.up, rotatey);
         myTransform.LookAt(target);
 	}
 
