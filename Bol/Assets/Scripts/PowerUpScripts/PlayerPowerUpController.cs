@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerPowerUpController : MonoBehaviour {
 
     PowerUp storedPowerUp = null;
+
+    [SerializeField]
+    bool hasPowerUp = false;
+
     float timeLeft;
 
 	// Use this for initialization
@@ -17,8 +21,10 @@ public class PlayerPowerUpController : MonoBehaviour {
         timeLeft -= Time.deltaTime;
         if (timeLeft < 0.05)
         {
+            Debug.Log("Removing power up!");
             storedPowerUp.UndoEffect();
             storedPowerUp = null;
+            hasPowerUp = false;
         }
     }
 	
@@ -37,21 +43,28 @@ public class PlayerPowerUpController : MonoBehaviour {
             if (!storedPowerUp.EndsOnTurn)
             {
                 storedPowerUp = null;
+                hasPowerUp = false;
             }
         }
         else
         {
-            Debug.Log("NO POWERUP WTF U DOIN");
+            //Debug.Log("NO POWERUP WTF U DOIN");
         }
     }
 
     public void AddPowerup(PowerUp newPowerUp)
     {
+        if(newPowerUp == null)
+        {
+            print("That Powerup you gave me is null wtf.");
+        }
         if(storedPowerUp == null && newPowerUp != null)
         {
-            // Debug.Log("ADDED NEW POWERUP");
+            Debug.Log("ADDED NEW POWERUP " + newPowerUp.GetType());
             storedPowerUp = newPowerUp;
             storedPowerUp.Player = gameObject;
+            hasPowerUp = true;
+            Debug.Log(gameObject.name + ", " + storedPowerUp == null);
         }
     }
 
@@ -87,6 +100,7 @@ public class PlayerPowerUpController : MonoBehaviour {
 
     public PowerUp GetStoredPowerUp()
     {
+        Debug.Log("Getting powerup from " + gameObject.name + ", " + (storedPowerUp == null).ToString());
         return storedPowerUp;
     }
 }
