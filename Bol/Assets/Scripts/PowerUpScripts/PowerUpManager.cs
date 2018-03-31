@@ -6,8 +6,10 @@ using UnityEngine;
 public class PowerUpManager : MonoBehaviour {
 
     // Put on powerups!
-	// Use this for initialization
-	// Add new Powerups Here (pt. 1 of 2)
+    // Use this for initialization
+    // Add new Powerups Here (pt. 1 of 2)
+    int turnsInactive;
+    bool spawned = true;
     public enum PowerUpList { RANDOM = -1, RocketBoost, Brake, MoonJump, Bomb, GravityVortex }
 	void Start () {
 		
@@ -18,10 +20,22 @@ public class PowerUpManager : MonoBehaviour {
 		
 	}
 
-    public void Respawn()
+    public void Respawn(int numPlayers)
     {
-        gameObject.GetComponent<MeshRenderer>().enabled = true;
-        gameObject.GetComponent<Collider>().enabled = true;
+        if (!spawned)
+        {
+            if (turnsInactive >= numPlayers-1)
+            {
+                gameObject.GetComponent<MeshRenderer>().enabled = true;
+                gameObject.GetComponent<Collider>().enabled = true;
+                spawned = true;
+                turnsInactive = 0;
+            }
+            else
+            {
+                turnsInactive++;
+            }
+        }
     }
 
     public PowerUp GetPowerUp()
@@ -55,6 +69,8 @@ public class PowerUpManager : MonoBehaviour {
         }
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         gameObject.GetComponent<Collider>().enabled = false;
+        spawned = false;
+        turnsInactive = 0;
         return chosenPowerUp;
     }
 }

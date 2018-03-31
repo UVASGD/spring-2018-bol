@@ -10,7 +10,7 @@ public class TurnManager : MonoBehaviour {
     public UIUpdater uiUpdater;
 
 	int curPlayerIndex = 0;
-    int numPlayersPlaying;
+    
 
 	public float minimumVelocity = 0.1f;
 
@@ -36,7 +36,6 @@ public class TurnManager : MonoBehaviour {
 			}
 		}
         powerUps = GameObject.FindGameObjectsWithTag("PowerUp");
-        numPlayersPlaying = players.Length;
 		playersWon = new bool[players.Length];
 		for (int i = 0; i < playersWon.Length; i++) {
 			playersWon[i] = false;
@@ -120,7 +119,7 @@ public class TurnManager : MonoBehaviour {
         // There might be a better way to do this...
         foreach(GameObject powerUp in powerUps)
         {
-            powerUp.GetComponent<PowerUpManager>().Respawn();
+            powerUp.GetComponent<PowerUpManager>().Respawn(players.Length);
         }
 
 		inputController.curInput = curPlayerInput;
