@@ -14,6 +14,9 @@ public class CameraFollowPlayer : MonoBehaviour {
 	public float minimumDistance = 5.0f;
 	public float desiredAngle = 30.0f; // in degrees
 	public bool ballInFlight = false;
+
+	public float verticalAngleLowerBound = 1.0f;
+	public float verticalAngleUpperBound = 179.0f;
 	// Use this for initialization
 	void Start () {
         myTransform = gameObject.transform;
@@ -28,17 +31,21 @@ public class CameraFollowPlayer : MonoBehaviour {
             //myTransform.position = Vector3.MoveTowards(myTransform.position, new Vector3(target.position.x, myTransform.position.y, target.position.z), 1);
 		} else if (direction.magnitude < minimumDistance && !ballInFlight && !backingUp && !shifting) {
 			Debug.Log("Less than minimum distance and not backing up or shifting!");
-			Vector3 ballToCam = myTransform.position - target.position;
-			StartCoroutine(moveBack(target.position, (ballToCam.magnitude - minimumDistance)*1.5f, desiredAngle - Mathf.Asin(ballToCam.y/ballToCam.magnitude)*Mathf.Rad2Deg));
+			StartCoroutine(moveBack(target.position, (direction.magnitude - minimumDistance)*1.5f, desiredAngle - Mathf.Asin(direction.y/direction.magnitude)*Mathf.Rad2Deg));
 		} else if (direction.magnitude < minimumDistance) {
 			if (ballInFlight) Debug.Log("Within minimum distance but ball in flight!");
 			if (backingUp) Debug.Log("Within minimum distance but backing up already!");
 			if (shifting) Debug.Log("Within minimum distance but shifting!");
 		}
 		if (!ballInFlight) {
-			float rotatey = Input.GetAxis("CameraRotate");
-			shifting = Mathf.Abs(rotatey) > 0.05f;
-			myTransform.RotateAround(target.position, Vector3.up, rotatey);
+			float rotateH = Input.GetAxis("CameraHorizontal");
+			float rotateV = Input.GetAxis("CameraVertical");
+			shifting = Mathf.Abs(rotateH) > 0.05f || Mathf.Abs(rotateV) > 0.05f;
+			myTransform.RotateAround(target.position, Vector3.up, rotateH);
+			if ((Vector3.Angle(direction, Vector3.up) > verticalAngleLowerBound || rotateV < 0) && 
+				(Vector3.Angle(direction, Vector3.up) < verticalAngleUpperBound || rotateV > 0)){
+				myTransform.RotateAround(target.position, Vector3.Cross(direction, Vector3.up), rotateV);
+			}
 		}
         myTransform.LookAt(target);
 	}

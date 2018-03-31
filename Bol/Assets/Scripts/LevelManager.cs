@@ -27,7 +27,7 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	void GoLevelThree(){
-		SceneManager.LoadScene ("JaredTesting");
+		SceneManager.LoadScene ("Playground");
 	}
 
 }
