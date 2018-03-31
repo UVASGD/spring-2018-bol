@@ -46,6 +46,13 @@ public class PlayerPoints : MonoBehaviour {
 		
 	}
 
-    
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Point")
+        {
+            PointTotal += 1;
+            Destroy(other.gameObject);
+        }
+    }
 }
