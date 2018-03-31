@@ -169,7 +169,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6179fbcab1ca51546a838acc415dc084, type: 3}
-    m_FontSize: 14
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -182,8 +182,11 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Programming
 
-    (FILL YOUR NAMES HERE)
+    Jared Capelle
 
+    Jackson Ekis
+
+    William Wong
 
 
     Art
@@ -336,11 +339,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "You are B\xF6L. Score B\xF6L in G\xF6L.\n\n\nWASD: Move strike point.\nArrow
+  m_Text: "You are B\xF6L. Score B\xF6L in G\xF6L.\n\nWASD: Move strike point.\nArrow
     keys: Move camera.\nSpace: Hold to charge, release to shoot.\nP: activate a powerup
-    (if held and your turn).\n\n\nPowerup List:\n\n\tRocket Boost: ++ Horizontal Velocity,
+    (if held and your turn).\n\nPowerup List:\n\n\tRocket Boost: ++ Horizontal Velocity,
     -- Vertical Velocity\n\n\tBrake: -- Horizontal Velocity\n\n\tMoon Jump: ++ Vertical
-    Velocity\n\n\nHighest point count wins."
+    Velocity\n\n\tBomb: Explodes after short delay, knocking away all nearby B\xF6ls.\n\nHighest
+    point count wins."
 --- !u!222 &176468310
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1911,7 +1915,7 @@ RectTransform:
   m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000005}
   m_Children: []
   m_Father: {fileID: 1498357239}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1939,7 +1943,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6179fbcab1ca51546a838acc415dc084, type: 3}
-    m_FontSize: 14
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -2434,7 +2438,7 @@ RectTransform:
   m_Children:
   - {fileID: 1246704331}
   m_Father: {fileID: 1498357239}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2707,7 +2711,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6179fbcab1ca51546a838acc415dc084, type: 3}
-    m_FontSize: 14
+    m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -2720,8 +2724,11 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Design
 
-    (FILL YOUR NAMES HERE)
+    Robert Anton
 
+    Divya Karuturi
+
+    Sanjana Mendu
 
 
     Audio
@@ -2764,8 +2771,8 @@ RectTransform:
   - {fileID: 446091526}
   - {fileID: 61416471}
   - {fileID: 1474576112}
-  - {fileID: 1254921144}
   - {fileID: 1157052158}
+  - {fileID: 1254921144}
   m_Father: {fileID: 778060640}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -3295,7 +3302,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 147, y: -151.36377}
+  m_AnchoredPosition: {x: 206, y: -84}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2114070749
@@ -3484,3 +3491,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelOne: {fileID: 814210557}
+  levelTwo: {fileID: 387032454}
+  levelThree: {fileID: 0}
+  levelFour: {fileID: 0}
