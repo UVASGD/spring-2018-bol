@@ -28,8 +28,7 @@ public class CameraFollowPlayer : MonoBehaviour {
             //myTransform.position = Vector3.MoveTowards(myTransform.position, new Vector3(target.position.x, myTransform.position.y, target.position.z), 1);
 		} else if (direction.magnitude < minimumDistance && !ballInFlight && !backingUp && !shifting) {
 			Debug.Log("Less than minimum distance and not backing up or shifting!");
-			Vector3 ballToCam = myTransform.position - target.position;
-			StartCoroutine(moveBack(target.position, (ballToCam.magnitude - minimumDistance)*1.5f, desiredAngle - Mathf.Asin(ballToCam.y/ballToCam.magnitude)*Mathf.Rad2Deg));
+			StartCoroutine(moveBack(target.position, (direction.magnitude - minimumDistance)*1.5f, desiredAngle - Mathf.Asin(direction.y/direction.magnitude)*Mathf.Rad2Deg));
 		} else if (direction.magnitude < minimumDistance) {
 			if (ballInFlight) Debug.Log("Within minimum distance but ball in flight!");
 			if (backingUp) Debug.Log("Within minimum distance but backing up already!");
