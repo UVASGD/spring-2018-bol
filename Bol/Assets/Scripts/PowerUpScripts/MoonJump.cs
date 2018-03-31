@@ -23,16 +23,16 @@ public class MoonJump : PowerUp
 
     public override void PowerUpEffect()
     {
-        Debug.Log("MoonJump PowerUpEffect activated");
+        //Debug.Log("MoonJump PowerUpEffect activated");
         Rigidbody playerAtt = player.GetComponent<Rigidbody>();
-        Debug.Log(playerAtt.velocity);
+        //Debug.Log(playerAtt.velocity);
 
         //x and z velocity stay the same, y velocity is incremented
         //not really sure what kind of units these are so idk how much to increment
         Vector3 newVelocity = playerAtt.velocity;
         newVelocity.y += 10;
         playerAtt.velocity = newVelocity;
-        Debug.Log(playerAtt.velocity);
+        //Debug.Log(playerAtt.velocity);
 
         Physics.gravity /= 2;
 

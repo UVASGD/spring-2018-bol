@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class TurnManager : MonoBehaviour {
 
-	GameObject[] players;
+	public GameObject[] players;
 	public UnifiedInput inputController;
 
     public UIUpdater uiUpdater;
@@ -28,7 +29,9 @@ public class TurnManager : MonoBehaviour {
 
     // Use this for initialization
 	void Start () {
+		IComparer playerOrderer = new PlayerSorter();
 		players = GameObject.FindGameObjectsWithTag("Player");
+		Array.Sort(players, playerOrderer);
 		foreach (GameObject player in players) {
 			if (player.GetComponent<PlayerInput>() == null || player.GetComponent<PlayerControl>() == null) {
 				Debug.LogError("Player Input or Player Control on " + player + " is null");
@@ -127,5 +130,14 @@ public class TurnManager : MonoBehaviour {
 		inputController.curPowerup = curPlayerPowerUp;
 		switching = false;
 		confirming = false;
+	}
+
+	public class PlayerSorter : IComparer  {
+
+		// Calls CaseInsensitiveComparer.Compare on the monster name string.
+		int IComparer.Compare( System.Object x, System.Object y )  {
+			return( (new CaseInsensitiveComparer()).Compare( ((GameObject)x).name, ((GameObject)y).name) );
+		}
+
 	}
 }
