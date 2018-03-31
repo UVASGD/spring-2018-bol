@@ -343,7 +343,7 @@ MonoBehaviour:
     keys: Move camera.\nSpace: Hold to charge, release to shoot.\nP: activate a powerup
     (if held and your turn).\n\nPowerup List:\n\n\tRocket Boost: ++ Horizontal Velocity,
     -- Vertical Velocity\n\n\tBrake: -- Horizontal Velocity\n\n\tMoon Jump: ++ Vertical
-    Velocity\n\n\tBomb: Explodes after short delay, knocking away all nearby B\xF6ls.\n\nHighest
+    Velocity\n\n\tBomb: Explodes after short delay, knocking away all nearby B\xF6Ls.\n\nHighest
     point count wins."
 --- !u!222 &176468310
 CanvasRenderer:

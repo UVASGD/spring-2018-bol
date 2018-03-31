@@ -8,7 +8,7 @@ public class PowerUpManager : MonoBehaviour {
     // Put on powerups!
 	// Use this for initialization
 	// Add new Powerups Here (pt. 1 of 2)
-    public enum PowerUpList { RANDOM = -1, RocketBoost, Brake, MoonJump, Bomb }
+    public enum PowerUpList { RANDOM = -1, RocketBoost, Brake, MoonJump, Bomb, GravityVortex }
 	void Start () {
 		
 	}
@@ -48,6 +48,9 @@ public class PowerUpManager : MonoBehaviour {
                 break;
 			case PowerUpList.Bomb:
 				chosenPowerUp = new BombPowerUp ();
+				break;
+			case PowerUpList.GravityVortex:
+				chosenPowerUp = new GravityVortexPowerUp ();
 				break;
         }
         gameObject.GetComponent<MeshRenderer>().enabled = false;

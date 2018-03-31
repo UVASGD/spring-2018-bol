@@ -23,9 +23,9 @@ GameObject:
   - component: {fileID: 135705664448169374}
   - component: {fileID: 23054650545595522}
   - component: {fileID: 54466580297660546}
-  - component: {fileID: 114648420716218868}
+  - component: {fileID: 114773608611725960}
   m_Layer: 0
-  m_Name: Bomb
+  m_Name: Gravity Vortex
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,7 +58,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 1f618a20a786d1447bcea202de33e588, type: 2}
+  - {fileID: 2100000, guid: a12f40d5f4a829d4a8583d4c95371bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -100,7 +100,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114648420716218868
+--- !u!114 &114773608611725960
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -108,11 +108,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1954587069753712}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d9f9e3c604e70a44a2987a8cced89d6, type: 3}
+  m_Script: {fileID: 11500000, guid: da8504832b7b19f4b94f897a331d566e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 65
-  power: 1000
+  power: 2000
 --- !u!135 &135705664448169374
 SphereCollider:
   m_ObjectHideFlags: 1
