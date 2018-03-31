@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  minimumDistance: 1
+  minimumDistance: 5
   desiredAngle: 30
   canRotate: 1
 --- !u!124 &124745143991330008
