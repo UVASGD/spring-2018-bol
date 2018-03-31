@@ -20,6 +20,8 @@ public class TurnManager : MonoBehaviour {
 	const int WAIT_TIME = 3;
 
 	int turnsSinceWin = 0;
+	int firstWinningPlayerIndex = -1;
+	bool[] playersWon;
     
     // Use this for initialization
 	void Start () {
@@ -31,6 +33,7 @@ public class TurnManager : MonoBehaviour {
 		}
         powerUps = GameObject.FindGameObjectsWithTag("PowerUp");
         numPlayersPlaying = players.Length;
+		playersWon = new bool[players.Length];
 		StartCoroutine(checkTurnSwitch());
 	}
 	
@@ -39,13 +42,27 @@ public class TurnManager : MonoBehaviour {
 		
 	}
 
+	bool AllPlayersWon() {
+		foreach (bool b in playersWon) {
+			if (!b) return false;
+		}
+		return true;
+	}
+
 	IEnumerator checkTurnSwitch() {
 		while (gameObject.activeInHierarchy) {
 			PlayerControl curPlayerControl = players[curPlayerIndex].GetComponent<PlayerControl>();
 			Rigidbody curPlayerRB = players[curPlayerIndex].GetComponent<Rigidbody>();
 			PlayerInput curPlayerInput = players[curPlayerIndex].GetComponent<PlayerInput>();
 			PlayerPowerUpController curPlayerPowerUp = players[curPlayerIndex].GetComponent<PlayerPowerUpController>();
-			if (curPlayerControl.getPossibleTurnOver() && (curPlayerRB.velocity.magnitude < minimumVelocity /* OR curPlayer has won */) && !switching) {
+			PlayerPoints curPlayerPoints = players[curPlayerIndex].GetComponent<PlayerPoints>();
+			if (curPlayerControl.getPossibleTurnOver() && (curPlayerRB.velocity.magnitude < minimumVelocity || !curPlayerPoints.PlayerPlaying) && !switching) {
+				if (curPlayerIndex == firstWinningPlayerIndex) turnsSinceWin++;
+				if (firstWinningPlayerIndex == -1) firstWinningPlayerIndex = curPlayerIndex;
+
+				if (turnsSinceWin > 5 || AllPlayersWon()) {
+					// End the game!
+				}
 				StartCoroutine(switchTurn(curPlayerControl, curPlayerRB, curPlayerInput, curPlayerPowerUp));
 			} else {
 				confirming = false; // The player is moving, so we are no longer confirmed.
