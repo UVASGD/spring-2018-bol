@@ -89,6 +89,6 @@ public class CameraFollowPlayer : MonoBehaviour {
 			yield return null;
 		}
 		rotating = false;
-		//Destroy(finalGO);
+		Destroy(finalGO);
 	}
 }

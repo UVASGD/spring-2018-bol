@@ -80,7 +80,7 @@ public class TurnManager : MonoBehaviour {
 				if (turnsSinceWin > 5 || AllPlayersWon()) {
 					// End the game!
 				}
-				StartCoroutine(switchTurn(curPlayerControl, curPlayerRB, curPlayerInput, curPlayerPowerUp));
+				StartCoroutine(switchTurn(curPlayerControl, curPlayerRB, curPlayerInput, curPlayerPowerUp, curPlayerPoints));
 			} else {
 				confirming = false; // The player is moving, so we are no longer confirmed.
 			}
@@ -88,8 +88,8 @@ public class TurnManager : MonoBehaviour {
 		}
 	}
 
-	IEnumerator switchTurn(PlayerControl curPlayerControl, Rigidbody curPlayerRB, PlayerInput curPlayerInput, PlayerPowerUpController curPlayerPowerUp) {
-		if (!confirming) {
+	IEnumerator switchTurn(PlayerControl curPlayerControl, Rigidbody curPlayerRB, PlayerInput curPlayerInput, PlayerPowerUpController curPlayerPowerUp, PlayerPoints curPlayerPoints) {
+		if (!confirming && curPlayerPoints.PlayerPlaying) {
 			confirming = true; // We are currently confirming!
 			Debug.Log("Confirming!");
 			yield break;
@@ -105,29 +105,30 @@ public class TurnManager : MonoBehaviour {
 
 		players[curPlayerIndex].GetComponent<Indicator>().indicatorObj.SetActive(false);
 		curPlayerIndex = (curPlayerIndex + 1) % players.Length ;
-		players[curPlayerIndex].GetComponent<Indicator>().indicatorObj.SetActive(true);
-
-		curPlayerControl = players[curPlayerIndex].GetComponent<PlayerControl>();
-		curPlayerRB = players[curPlayerIndex].GetComponent<Rigidbody>();
-		curPlayerInput = players[curPlayerIndex].GetComponent<PlayerInput>();
-
-
-		Camera.main.GetComponent<CameraFollowPlayer>().target = players[curPlayerIndex].transform;
 		Camera.main.GetComponent<CameraFollowPlayer>().ballLeaveFlight();
+		// There might be a better way to do this...
+		foreach(GameObject powerUp in powerUps)
+		{
+			powerUp.GetComponent<PowerUpManager>().Respawn(players.Length);
+		}
+		if (players[curPlayerIndex].GetComponent<PlayerPoints>().PlayerPlaying) {
+			players[curPlayerIndex].GetComponent<Indicator>().indicatorObj.SetActive(true);
 
-		curPlayerInput.enabled = true;
-		curPlayerControl.enabled = true;
-        curPlayerPowerUp.EndTurn();
+			curPlayerControl = players[curPlayerIndex].GetComponent<PlayerControl>();
+			curPlayerRB = players[curPlayerIndex].GetComponent<Rigidbody>();
+			curPlayerInput = players[curPlayerIndex].GetComponent<PlayerInput>();
 
-        // There might be a better way to do this...
-        foreach(GameObject powerUp in powerUps)
-        {
-            powerUp.GetComponent<PowerUpManager>().Respawn(players.Length);
-        }
 
-		inputController.curInput = curPlayerInput;
-		inputController.curPlayer = curPlayerControl;
-		inputController.curPowerup = curPlayerPowerUp;
+			Camera.main.GetComponent<CameraFollowPlayer>().target = players[curPlayerIndex].transform;
+
+			curPlayerInput.enabled = true;
+			curPlayerControl.enabled = true;
+	        curPlayerPowerUp.EndTurn();
+
+			inputController.curInput = curPlayerInput;
+			inputController.curPlayer = curPlayerControl;
+			inputController.curPowerup = curPlayerPowerUp;
+		}
 		switching = false;
 		confirming = false;
 	}
