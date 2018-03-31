@@ -168,7 +168,9 @@ MonoBehaviour:
   - {fileID: 796666730}
   - {fileID: 1869377211}
   inputController: {fileID: 1602578825}
+  uiUpdater: {fileID: 0}
   minimumVelocity: 1
+  playerFindRegex: 
 --- !u!4 &649039260
 Transform:
   m_ObjectHideFlags: 0
@@ -224,6 +226,10 @@ Prefab:
     - target: {fileID: 1954587069753712, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb, type: 2}
       propertyPath: m_Name
       value: Player 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1409341558325378, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb, type: 2}
@@ -411,6 +417,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 638517063}
+  minimumDistance: 5
+  desiredAngle: 30
+  canRotate: 1
 --- !u!1001 &940872664
 Prefab:
   m_ObjectHideFlags: 0
@@ -593,6 +602,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curInput: {fileID: 638517061}
   curPlayer: {fileID: 638517062}
+  curPowerup: {fileID: 0}
 --- !u!4 &1602578826
 Transform:
   m_ObjectHideFlags: 0
