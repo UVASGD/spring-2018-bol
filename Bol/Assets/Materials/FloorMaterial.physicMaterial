@@ -6,8 +6,8 @@ PhysicMaterial:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: FloorMaterial
-  dynamicFriction: Infinity
-  staticFriction: Infinity
+  dynamicFriction: 0
+  staticFriction: 0.6
   bounciness: 0
   frictionCombine: 3
   bounceCombine: 0
