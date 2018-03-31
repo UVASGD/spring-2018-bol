@@ -20,5 +20,7 @@ public class BombPowerUp : PowerUp
 	}
 
 	public override void PowerUpEffect(){
+		GameObject bombPrefab = Resources.Load ("Bomb") as GameObject;
+		Object.Instantiate (bombPrefab, player.transform.position + new Vector3 (0.0f, 2.0f, 0.0f), Quaternion.identity);
 	}
 }
