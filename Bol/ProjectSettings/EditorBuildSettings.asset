@@ -17,3 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestScenes/SanjanaLevel.unity
     guid: 8b9b239ad3c7d47eb83035a9b3a4aa26
+  - enabled: 1
+    path: Assets/Scenes/Towers Level.unity
+    guid: 9d56c1ebfd1f476439b5f79c459fab67
