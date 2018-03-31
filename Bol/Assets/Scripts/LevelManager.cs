@@ -7,6 +7,9 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour {
 
 	public Button levelOne;
+	public Button levelTwo;
+	public Button levelThree;
+	public Button levelFour;
 
 	// Use this for initialization
 	void Awake () {
