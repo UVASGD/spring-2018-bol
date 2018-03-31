@@ -17,7 +17,7 @@ public class UIUpdater : MonoBehaviour {
         
 	}
 
-    public void UpdatePowerUpText(PowerUp powerUp = null)
+    public void UpdatePowerUpText(PowerUp powerUp)
     {
         if (powerUp == null)
         {
