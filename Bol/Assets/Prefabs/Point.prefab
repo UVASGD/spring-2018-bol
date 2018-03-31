@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33532361661182162}
   - component: {fileID: 23996459648885946}
   - component: {fileID: 65634242951737602}
+  - component: {fileID: 114615714670845616}
   m_Layer: 0
   m_Name: Point
   m_TagString: Point
@@ -93,5 +94,16 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0046875, y: 0.006350447, z: 0.001875}
-  m_Center: {x: 0.00015624985, y: 0.0031752235, z: 0}
+  m_Size: {x: 0.0046875, y: 0.004658941, z: 0.001875}
+  m_Center: {x: 0.00015624985, y: 0.0023294706, z: 1.1458755e-18}
+--- !u!114 &114615714670845616
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1041705371037894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 026d5ba59a3502641930de73710b3a56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
