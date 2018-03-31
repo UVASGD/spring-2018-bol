@@ -51,7 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b415bf7c9c61d4e88a84727e15fac469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players:
-  - {fileID: 0}
   inputController: {fileID: 0}
-  minimumVelocity: 0.1
+  uiUpdater: {fileID: 0}
+  minimumVelocity: 0.5
