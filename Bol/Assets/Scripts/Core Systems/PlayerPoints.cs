@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerPoints : MonoBehaviour {
 
     int pointTotal;
+    bool playerPlaying;
+
 
     public int PointTotal
     {
@@ -19,9 +21,24 @@ public class PlayerPoints : MonoBehaviour {
         }
     }
 
+    public bool PlayerPlaying
+    {
+        get
+        {
+            return playerPlaying;
+        }
+
+        set
+        {
+            playerPlaying = value;
+        }
+    }
+
+
     // Use this for initialization
     void Start () {
         PointTotal = 0;
+        PlayerPlaying = true;
 	}
 	
 	// Update is called once per frame
