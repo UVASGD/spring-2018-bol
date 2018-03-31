@@ -51,8 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b415bf7c9c61d4e88a84727e15fac469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputController: {fileID: 114163925293332646, guid: 6d7957354ae200044acd75e1398c0ff6,
-    type: 2}
-  uiUpdater: {fileID: 114960215347059320, guid: c48c5a33dfb66e64a964d1ef56c5573d,
-    type: 2}
-  minimumVelocity: 0.1
+  inputController: {fileID: 0}
+  uiUpdater: {fileID: 0}
+  minimumVelocity: 0.5
