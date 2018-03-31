@@ -54,4 +54,5 @@ MonoBehaviour:
   players:
   - {fileID: 0}
   inputController: {fileID: 0}
+  uiUpdater: {fileID: 0}
   minimumVelocity: 0.1
