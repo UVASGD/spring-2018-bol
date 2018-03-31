@@ -180,7 +180,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Programming
+  m_Text: 'Programming:
 
     Jared Capelle
 
@@ -189,9 +189,9 @@ MonoBehaviour:
     William Wong
 
 
-    Art
+    Art:
 
-    (FILL YOUR NAMES HERE)'
+    (FILL NAMES HERE)'
 --- !u!222 &61416473
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1954,7 +1954,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Directors
+  m_Text: 'Directors:
 
     Robert Anton and Jared Capelle'
 --- !u!222 &1157052160
@@ -2722,7 +2722,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Design
+  m_Text: 'Design:
 
     Robert Anton
 
@@ -2731,7 +2731,7 @@ MonoBehaviour:
     Sanjana Mendu
 
 
-    Audio
+    Audio:
 
     (FILL YOUR NAMES HERE)'
 --- !u!222 &1474576114
