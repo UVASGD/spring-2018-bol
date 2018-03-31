@@ -39,6 +39,7 @@ public class PlayerPowerUpController : MonoBehaviour {
     {
         if (storedPowerUp != null)
         {
+            Debug.Log(gameObject.name + "Using PowerUp");
             storedPowerUp.PowerUpEffect();
             if (!storedPowerUp.EndsOnTurn)
             {

@@ -117,6 +117,7 @@ public class TurnManager : MonoBehaviour {
 			curPlayerControl = players[curPlayerIndex].GetComponent<PlayerControl>();
 			curPlayerRB = players[curPlayerIndex].GetComponent<Rigidbody>();
 			curPlayerInput = players[curPlayerIndex].GetComponent<PlayerInput>();
+            curPlayerPowerUp = players[curPlayerIndex].GetComponent<PlayerPowerUpController>();
 
 
 			Camera.main.GetComponent<CameraFollowPlayer>().target = players[curPlayerIndex].transform;
