@@ -22,7 +22,9 @@ public class TurnManager : MonoBehaviour {
 	int turnsSinceWin = 0;
 	int firstWinningPlayerIndex = -1;
 	bool[] playersWon;
-    
+
+    bool firstLoop = true;
+
     // Use this for initialization
 	void Start () {
 		foreach (GameObject player in players) {
@@ -59,7 +61,12 @@ public class TurnManager : MonoBehaviour {
 			PlayerInput curPlayerInput = players[curPlayerIndex].GetComponent<PlayerInput>();
 			PlayerPowerUpController curPlayerPowerUp = players[curPlayerIndex].GetComponent<PlayerPowerUpController>();
 			PlayerPoints curPlayerPoints = players[curPlayerIndex].GetComponent<PlayerPoints>();
-			if (curPlayerControl.getPossibleTurnOver() && (curPlayerRB.velocity.magnitude < minimumVelocity || !curPlayerPoints.PlayerPlaying) && !switching) {
+            if (firstLoop)
+            {
+                players[curPlayerIndex].GetComponent<Indicator>().indicatorObj.SetActive(true);
+                firstLoop = false;
+            }
+            if (curPlayerControl.getPossibleTurnOver() && (curPlayerRB.velocity.magnitude < minimumVelocity || !curPlayerPoints.PlayerPlaying) && !switching) {
 				if (curPlayerIndex == firstWinningPlayerIndex) turnsSinceWin++;
 				if (!curPlayerPoints.PlayerPlaying) {
 					if (firstWinningPlayerIndex == -1) firstWinningPlayerIndex = curPlayerIndex;
