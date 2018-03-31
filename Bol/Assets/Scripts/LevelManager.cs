@@ -15,14 +15,19 @@ public class LevelManager : MonoBehaviour {
 	void Awake () {
 		levelOne.onClick.AddListener (() => GoLevelOne ());
 		levelTwo.onClick.AddListener (() => GoLevelTwo ());
+		levelThree.onClick.AddListener (() => GoLevelThree ());
 	}
 
 	void GoLevelOne(){
-		SceneManager.LoadScene("JaredTesting");
+		SceneManager.LoadScene("Towers Level");
 	}
 
 	void GoLevelTwo(){
 		SceneManager.LoadScene("SanjanaLevel");
+	}
+
+	void GoLevelThree(){
+		SceneManager.LoadScene ("JaredTesting");
 	}
 
 }
