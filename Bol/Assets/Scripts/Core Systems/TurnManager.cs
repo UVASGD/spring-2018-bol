@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour {
 
-	public GameObject[] players;
+	GameObject[] players;
 	public UnifiedInput inputController;
 
     public UIUpdater uiUpdater;
 
 	int curPlayerIndex = 0;
-    
 
 	public float minimumVelocity = 0.1f;
 
@@ -25,10 +24,11 @@ public class TurnManager : MonoBehaviour {
 	int firstWinningPlayerIndex = -1;
 	bool[] playersWon;
 
-    bool firstLoop = true;
+	bool firstLoop = true;
 
     // Use this for initialization
 	void Start () {
+		players = GameObject.FindGameObjectsWithTag("Player");
 		foreach (GameObject player in players) {
 			if (player.GetComponent<PlayerInput>() == null || player.GetComponent<PlayerControl>() == null) {
 				Debug.LogError("Player Input or Player Control on " + player + " is null");
