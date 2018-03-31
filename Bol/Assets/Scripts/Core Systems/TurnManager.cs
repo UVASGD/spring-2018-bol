@@ -8,6 +8,7 @@ public class TurnManager : MonoBehaviour {
 	public UnifiedInput inputController;
 
 	int curPlayerIndex = 0;
+    int numPlayersPlaying;
 
 	public float minimumVelocity = 0.1f;
 
@@ -29,6 +30,7 @@ public class TurnManager : MonoBehaviour {
 			}
 		}
         powerUps = GameObject.FindGameObjectsWithTag("PowerUp");
+        numPlayersPlaying = players.Length;
 		StartCoroutine(checkTurnSwitch());
 	}
 	

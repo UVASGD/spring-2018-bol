@@ -36,25 +36,25 @@ public class MainMenu : MonoBehaviour {
 	}
 
 	void OnClickPlay(){
-		if (!moving) StartCoroutine (rotateCamera (180.0f, 180.0f, 0.5f));
+		if (!moving) StartCoroutine (rotateCamera (180.0f, 180.0f, 0.25f));
 	}
 
 	void OnClickPlayMain()
 	{
-		if (!moving) StartCoroutine (rotateCamera (180.0f, 0.0f, 0.5f));
+		if (!moving) StartCoroutine (rotateCamera (180.0f, 0.0f, 0.25f));
 	}
 
 	void OnClickHelp(){
-		if (!moving) StartCoroutine (rotateCamera (-90.0f, -90.0f, 0.5f));
+		if (!moving) StartCoroutine (rotateCamera (-90.0f, -90.0f, 0.25f));
 	}
 
 	void OnClickHelpMain(){
-		if (!moving) StartCoroutine (rotateCamera (90.0f, 0.0f, 0.5f));
+		if (!moving) StartCoroutine (rotateCamera (90.0f, 0.0f, 0.25f));
 	}
 
 	void OnClickCredit()
 	{
-		if (!moving) StartCoroutine (rotateCamera (90.0f, 90.0f, 0.5f));
+		if (!moving) StartCoroutine (rotateCamera (90.0f, 90.0f, 0.25f));
 	}
 
 	void OnClickMain()

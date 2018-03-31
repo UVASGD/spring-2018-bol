@@ -41,7 +41,8 @@ public class EndOfLevelController : MonoBehaviour {
 
 	}
 	private void PlayerStayed(Collider other) {
-		print ("Info: Goal trigger activate");
+        other.gameObject.GetComponent<PlayerPoints>().PlayerPlaying = false;
+        //Add the points
 		//Remove the player object, activate a flag for that player having finished
 		//Destroy (this.gameObject);
 	}
