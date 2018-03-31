@@ -34,6 +34,9 @@ public class TurnManager : MonoBehaviour {
         powerUps = GameObject.FindGameObjectsWithTag("PowerUp");
         numPlayersPlaying = players.Length;
 		playersWon = new bool[players.Length];
+		for (int i = 0; i < playersWon.Length; i++) {
+			playersWon[i] = false;
+		}
 		StartCoroutine(checkTurnSwitch());
 	}
 	
@@ -58,8 +61,10 @@ public class TurnManager : MonoBehaviour {
 			PlayerPoints curPlayerPoints = players[curPlayerIndex].GetComponent<PlayerPoints>();
 			if (curPlayerControl.getPossibleTurnOver() && (curPlayerRB.velocity.magnitude < minimumVelocity || !curPlayerPoints.PlayerPlaying) && !switching) {
 				if (curPlayerIndex == firstWinningPlayerIndex) turnsSinceWin++;
-				if (firstWinningPlayerIndex == -1) firstWinningPlayerIndex = curPlayerIndex;
-
+				if (!curPlayerPoints.PlayerPlaying) {
+					if (firstWinningPlayerIndex == -1) firstWinningPlayerIndex = curPlayerIndex;
+					playersWon[curPlayerIndex] = true;
+				}
 				if (turnsSinceWin > 5 || AllPlayersWon()) {
 					// End the game!
 				}
