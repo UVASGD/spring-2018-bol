@@ -18,6 +18,7 @@ public class UnifiedInput : MonoBehaviour {
 		if (curInput.GetJump()) {
 			Camera.main.GetComponent<CameraFollowPlayer>().ballEnterFlight();
 			curPlayer.LaunchInDirection(calculateDirectionVector(), curInput.curPower);
+			curPlayer.GetComponent<Indicator>().toggleActive();
 		}
         if (curInput.GetPowerUp())
         {
@@ -34,11 +35,11 @@ public class UnifiedInput : MonoBehaviour {
 		return directionHorizRot*(directionVertRot*Vector3.forward);
 	}
 
-	void OnDrawGizmos() {
+	/*void OnDrawGizmos() {
 		Gizmos.color = Color.red;
 		Vector3 playerPosition = curPlayer.gameObject.transform.position;
 
 		Gizmos.DrawLine(playerPosition, playerPosition + calculateDirectionVector());
 		Gizmos.DrawSphere(playerPosition + (calculateDirectionVector() * (curInput.curPower/curInput.maxPower)), 0.1f);
-	}
+	}*/
 }

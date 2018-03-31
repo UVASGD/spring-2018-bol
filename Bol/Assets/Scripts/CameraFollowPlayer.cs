@@ -10,8 +10,9 @@ public class CameraFollowPlayer : MonoBehaviour {
 	bool rotating = false;
 	bool backingUp = false;
 	float followDistance = 10.0f;
-	public float minimumDistance = 1.0f;
+	public float minimumDistance = 5.0f;
 	public float desiredAngle = 30.0f; // in degrees
+	public bool canRotate = true;
 	// Use this for initialization
 	void Start () {
         myTransform = gameObject.transform;
@@ -29,18 +30,22 @@ public class CameraFollowPlayer : MonoBehaviour {
 			Vector3 ballToCam = myTransform.position - target.position;
 			StartCoroutine(moveBack(target.position, (ballToCam.magnitude - minimumDistance)*1.5f, desiredAngle - Mathf.Asin(ballToCam.y/ballToCam.magnitude)*Mathf.Rad2Deg));
 		}
-		float rotatey = Input.GetAxis("CameraRotate");
-		Camera.main.transform.RotateAround(target.position, Vector3.up, rotatey);
+		if (canRotate) {
+			float rotatey = Input.GetAxis("CameraRotate");
+			Camera.main.transform.RotateAround(target.position, Vector3.up, rotatey);
+		}
         myTransform.LookAt(target);
 	}
 
 	public void ballEnterFlight() {
 		Debug.Log("Ball entering flight");
 		followDistance = 30.0f;
+		canRotate = false;
 	}
 
 	public void ballLeaveFlight() {
 		followDistance = 10.0f;
+		canRotate = true;
 	}
 
 	IEnumerator moveBack(Vector3 fromPos, float dist, float angle) {

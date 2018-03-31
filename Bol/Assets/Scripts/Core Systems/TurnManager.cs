@@ -17,6 +17,8 @@ public class TurnManager : MonoBehaviour {
     private GameObject[] powerUps;
 
 	const int WAIT_TIME = 3;
+
+	int turnsSinceWin = 0;
     
     // Use this for initialization
 	void Start () {
@@ -41,7 +43,7 @@ public class TurnManager : MonoBehaviour {
 			Rigidbody curPlayerRB = players[curPlayerIndex].GetComponent<Rigidbody>();
 			PlayerInput curPlayerInput = players[curPlayerIndex].GetComponent<PlayerInput>();
 			PlayerPowerUpController curPlayerPowerUp = players[curPlayerIndex].GetComponent<PlayerPowerUpController>();
-			if (curPlayerControl.getPossibleTurnOver() && curPlayerRB.velocity.magnitude < minimumVelocity && !switching) {
+			if (curPlayerControl.getPossibleTurnOver() && (curPlayerRB.velocity.magnitude < minimumVelocity /* OR curPlayer has won */) && !switching) {
 				StartCoroutine(switchTurn(curPlayerControl, curPlayerRB, curPlayerInput, curPlayerPowerUp));
 			} else {
 				confirming = false; // The player is moving, so we are no longer confirmed.
@@ -65,11 +67,14 @@ public class TurnManager : MonoBehaviour {
 		curPlayerControl.enabled = false;
 		curPlayerControl.endTurn();
 
+		players[curPlayerIndex].GetComponent<Indicator>().indicatorObj.SetActive(false);
 		curPlayerIndex = (curPlayerIndex + 1) % players.Length ;
+		players[curPlayerIndex].GetComponent<Indicator>().indicatorObj.SetActive(true);
 
 		curPlayerControl = players[curPlayerIndex].GetComponent<PlayerControl>();
 		curPlayerRB = players[curPlayerIndex].GetComponent<Rigidbody>();
 		curPlayerInput = players[curPlayerIndex].GetComponent<PlayerInput>();
+
 
 		Camera.main.GetComponent<CameraFollowPlayer>().target = players[curPlayerIndex].transform;
 		Camera.main.GetComponent<CameraFollowPlayer>().ballLeaveFlight();
