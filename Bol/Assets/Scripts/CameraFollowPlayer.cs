@@ -8,6 +8,7 @@ public class CameraFollowPlayer : MonoBehaviour {
     private Vector3 direction;
 	bool moving = false;
 	bool rotating = false;
+	bool shifting = false;
 	bool backingUp = false;
 	float followDistance = 10.0f;
 	public float minimumDistance = 5.0f;
@@ -21,18 +22,20 @@ public class CameraFollowPlayer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         direction = myTransform.position - target.position;
-		if(direction.magnitude >= followDistance && !moving && !rotating)
+		if(direction.magnitude >= followDistance && !moving && !rotating && !shifting)
         {
 			StartCoroutine(moveTowards(Vector3.MoveTowards(myTransform.position, new Vector3(target.position.x, myTransform.position.y, target.position.z), direction.magnitude - followDistance), 1.0f));
             //myTransform.position = Vector3.MoveTowards(myTransform.position, new Vector3(target.position.x, myTransform.position.y, target.position.z), 1);
-		} else if (direction.magnitude < minimumDistance && !backingUp) {
-			Debug.Log("Less than minimum distance and not backing up!");
+		} else if (direction.magnitude < minimumDistance && !backingUp && !shifting) {
+			Debug.Log("Less than minimum distance and not backing up or shifting!");
 			Vector3 ballToCam = myTransform.position - target.position;
 			StartCoroutine(moveBack(target.position, (ballToCam.magnitude - minimumDistance)*1.5f, desiredAngle - Mathf.Asin(ballToCam.y/ballToCam.magnitude)*Mathf.Rad2Deg));
 		}
 		if (canRotate) {
 			float rotatey = Input.GetAxis("CameraRotate");
-			Camera.main.transform.RotateAround(target.position, Vector3.up, rotatey);
+			if (Mathf.Abs(rotatey) > 0.05f) shifting = true;
+			Debug.Log(target.position);
+			myTransform.RotateAround(target.position, Vector3.up, rotatey);
 		}
         myTransform.LookAt(target);
 	}
