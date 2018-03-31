@@ -7,6 +7,8 @@ public class TurnManager : MonoBehaviour {
 	public GameObject[] players;
 	public UnifiedInput inputController;
 
+    public UIUpdater uiUpdater;
+
 	int curPlayerIndex = 0;
     int numPlayersPlaying;
 
@@ -66,6 +68,7 @@ public class TurnManager : MonoBehaviour {
                 players[curPlayerIndex].GetComponent<Indicator>().indicatorObj.SetActive(true);
                 firstLoop = false;
             }
+            uiUpdater.UpdatePowerUpText(curPlayerPowerUp.GetStoredPowerUp());
             if (curPlayerControl.getPossibleTurnOver() && (curPlayerRB.velocity.magnitude < minimumVelocity || !curPlayerPoints.PlayerPlaying) && !switching) {
 				if (curPlayerIndex == firstWinningPlayerIndex) turnsSinceWin++;
 				if (!curPlayerPoints.PlayerPlaying) {

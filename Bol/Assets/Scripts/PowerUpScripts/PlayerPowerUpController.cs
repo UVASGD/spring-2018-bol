@@ -84,4 +84,9 @@ public class PlayerPowerUpController : MonoBehaviour {
         // Allow object to take powerup
         return true;
     }
+
+    public PowerUp GetStoredPowerUp()
+    {
+        return storedPowerUp;
+    }
 }
