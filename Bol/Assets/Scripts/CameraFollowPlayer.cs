@@ -14,6 +14,9 @@ public class CameraFollowPlayer : MonoBehaviour {
 	public float minimumDistance = 5.0f;
 	public float desiredAngle = 30.0f; // in degrees
 	public bool ballInFlight = false;
+
+	public float verticalAngleLowerBound = 1.0f;
+	public float verticalAngleUpperBound = 179.0f;
 	// Use this for initialization
 	void Start () {
         myTransform = gameObject.transform;
@@ -35,9 +38,14 @@ public class CameraFollowPlayer : MonoBehaviour {
 			if (shifting) Debug.Log("Within minimum distance but shifting!");
 		}
 		if (!ballInFlight) {
-			float rotatey = Input.GetAxis("CameraRotate");
-			shifting = Mathf.Abs(rotatey) > 0.05f;
-			myTransform.RotateAround(target.position, Vector3.up, rotatey);
+			float rotateH = Input.GetAxis("CameraHorizontal");
+			float rotateV = Input.GetAxis("CameraVertical");
+			shifting = Mathf.Abs(rotateH) > 0.05f || Mathf.Abs(rotateV) > 0.05f;
+			myTransform.RotateAround(target.position, Vector3.up, rotateH);
+			if ((Vector3.Angle(direction, Vector3.up) > verticalAngleLowerBound || rotateV < 0) && 
+				(Vector3.Angle(direction, Vector3.up) < verticalAngleUpperBound || rotateV > 0)){
+				myTransform.RotateAround(target.position, Vector3.Cross(direction, Vector3.up), rotateV);
+			}
 		}
         myTransform.LookAt(target);
 	}
