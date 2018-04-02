@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 114831859013972244}
-  powVal: {fileID: 0}
+  turn: {fileID: 0}
 --- !u!114 &114782278705092518
 MonoBehaviour:
   m_ObjectHideFlags: 1

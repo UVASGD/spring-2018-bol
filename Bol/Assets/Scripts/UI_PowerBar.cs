@@ -3,22 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UI_PowerBar : PlayerInput {
+public class UI_PowerBar : MonoBehaviour {
 
 	public Image content;
-	public PlayerInput powVal;
+	public TurnManager turn;
 
 	// Use this for initialization
 	void Start () {
 		content.fillAmount = 0;
-		if (!powVal) {
-			powVal = GetComponent<PlayerInput>();
+		if (!turn) {
+			turn = (TurnManager)FindObjectOfType(typeof(TurnManager));
 		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		print (powVal.curPower);
-		content.fillAmount = powVal.curPower;
+		content.fillAmount = turn.GetCurrentPlayerInput().curPower / turn.GetCurrentPlayerInput().maxPower;
 	}
 }
