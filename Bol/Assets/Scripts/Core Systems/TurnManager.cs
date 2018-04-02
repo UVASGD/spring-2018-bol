@@ -43,6 +43,7 @@ public class TurnManager : MonoBehaviour {
 		for (int i = 0; i < playersWon.Length; i++) {
 			playersWon[i] = false;
 		}
+		players[curPlayerIndex].GetComponent<PlayerInput>().enabled = true;
 		StartCoroutine(checkTurnSwitch());
 	}
 	
