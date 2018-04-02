@@ -136,6 +136,26 @@ public class TurnManager : MonoBehaviour {
 		confirming = false;
 	}
 
+	public PlayerInput GetCurrentPlayerInput() {
+		return players[curPlayerIndex].GetComponent<PlayerInput>();
+	}
+
+	public Rigidbody GetCurrentPlayerRigidbody() {
+		return players[curPlayerIndex].GetComponent<Rigidbody>();
+	}
+
+	public PlayerPowerUpController GetCurrentPlayerPowerUpController() {
+		return players[curPlayerIndex].GetComponent<PlayerPowerUpController>();
+	}
+
+	public PlayerPoints GetCurrentPlayerPoints() {
+		return players[curPlayerIndex].GetComponent<PlayerPoints>();
+	}
+
+	public PlayerControl GetCurrentPlayerControl() {
+		return players[curPlayerIndex].GetComponent<PlayerControl>();
+	}
+
 	public class PlayerSorter : IComparer  {
 
 		// Calls CaseInsensitiveComparer.Compare on the monster name string.
