@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114532233507354820}
   - component: {fileID: 114255342491368046}
   - component: {fileID: 114960215347059320}
+  - component: {fileID: 114603072979349846}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -109,7 +110,6 @@ GameObject:
   - component: {fileID: 224920770304483536}
   - component: {fileID: 222927361054589622}
   - component: {fileID: 114449843587305598}
-  - component: {fileID: 114628972096610480}
   m_Layer: 5
   m_Name: Power Bar
   m_TagString: Untagged
@@ -214,12 +214,12 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
---- !u!114 &114628972096610480
+--- !u!114 &114603072979349846
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1983020659025604}
+  m_GameObject: {fileID: 1168343205371808}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5f8e9a02917d8d4284b159ead2826a6, type: 3}
