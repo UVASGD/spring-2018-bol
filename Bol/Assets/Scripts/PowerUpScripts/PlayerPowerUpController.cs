@@ -30,10 +30,7 @@ public class PlayerPowerUpController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(storedPowerUp != null && storedPowerUp.EndsOnTurn)
-        {
-            Timer();
-        }
+		
 	}
     public void UsePowerUp()
     {
@@ -52,6 +49,7 @@ public class PlayerPowerUpController : MonoBehaviour {
             //Debug.Log("NO POWERUP WTF U DOIN");
         }
     }
+		
 
     public void AddPowerup(PowerUp newPowerUp)
     {
@@ -74,6 +72,7 @@ public class PlayerPowerUpController : MonoBehaviour {
         if (storedPowerUp != null && storedPowerUp.EndsOnTurn)
         {
             storedPowerUp.UndoEffect();
+			storedPowerUp = null;
         }
     }
 
