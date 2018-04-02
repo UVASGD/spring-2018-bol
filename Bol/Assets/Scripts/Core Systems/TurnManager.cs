@@ -99,6 +99,7 @@ public class TurnManager : MonoBehaviour {
 		switching = true;
 		curPlayerRB.velocity = Vector3.zero;
 
+		curPlayerPowerUp.EndTurn ();
 		curPlayerInput.enabled = false;
 		curPlayerControl.enabled = false;
 		curPlayerControl.endTurn();
