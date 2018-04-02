@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraFollowPlayer : MonoBehaviour {
+public class CameraMan : MonoBehaviour {
     public Transform target;
     private Transform myTransform;
     private Vector3 direction;
@@ -17,9 +17,11 @@ public class CameraFollowPlayer : MonoBehaviour {
 
 	public float verticalAngleLowerBound = 1.0f;
 	public float verticalAngleUpperBound = 179.0f;
+
 	// Use this for initialization
 	void Start () {
         myTransform = gameObject.transform;
+		StartCoroutine(CheckCanSeePlayer());
 	}
 	
 	// Update is called once per frame
@@ -28,17 +30,9 @@ public class CameraFollowPlayer : MonoBehaviour {
 		if(direction.magnitude >= followDistance && !moving && !rotating && !shifting)
         {
 			Vector3 moveTowardsPoint = Vector3.MoveTowards(myTransform.position, target.position, (direction.magnitude - followDistance) * 1.25f);
-			Debug.Log("Target too far and not moving and not rotating and not shifting!");
-			Debug.Log("Moving towards " + moveTowardsPoint + ". This point is " + Vector3.Distance(moveTowardsPoint, target.position) + " units away from the target.");
 			StartCoroutine(moveTowards(moveTowardsPoint, 1.0f));
-            //myTransform.position = Vector3.MoveTowards(myTransform.position, new Vector3(target.position.x, myTransform.position.y, target.position.z), 1);
-		} else if (direction.magnitude < minimumDistance && !ballInFlight && !backingUp && !shifting) {
-			Debug.Log("Less than minimum distance and not backing up or shifting!");
+        } else if (direction.magnitude < minimumDistance && !ballInFlight && !backingUp && !shifting) {
 			StartCoroutine(moveBack(target.position, (direction.magnitude - minimumDistance)*1.5f, desiredAngle - Mathf.Asin(direction.y/direction.magnitude)*Mathf.Rad2Deg));
-		} else if (direction.magnitude < minimumDistance) {
-			if (ballInFlight) Debug.Log("Within minimum distance but ball in flight!");
-			if (backingUp) Debug.Log("Within minimum distance but backing up already!");
-			if (shifting) Debug.Log("Within minimum distance but shifting!");
 		}
 		if (!ballInFlight) {
 			float rotateH = Input.GetAxis("CameraHorizontal");
@@ -62,6 +56,20 @@ public class CameraFollowPlayer : MonoBehaviour {
 	public void ballLeaveFlight() {
 		followDistance = 10.0f;
 		ballInFlight = false;
+	}
+
+	IEnumerator CheckCanSeePlayer() {
+		while (gameObject.activeInHierarchy) {
+			if (!moving && !rotating && !shifting && ballInFlight) {
+				if (Physics.Linecast(myTransform.position, target.position)) {
+					Debug.Log("Finding a new position!");
+					Vector3 newPosition = FindGoodPosition();
+					if (newPosition != Vector3.zero) StartCoroutine(moveTowards(newPosition, 1.0f));
+					else Debug.Log("Could not find a new position!");
+				}
+			}
+			yield return new WaitForSeconds(3);
+		}
 	}
 
 	IEnumerator moveBack(Vector3 fromPos, float dist, float angle) {
@@ -100,5 +108,42 @@ public class CameraFollowPlayer : MonoBehaviour {
 		}
 		rotating = false;
 		Destroy(finalGO);
+	}
+
+	Vector3 FindGoodPosition() {
+		float angleIncrement = 360.0f/12; // Reduce the divisor (denominator) to increase performance
+		GameObject rotatee = new GameObject();
+		Vector3 initialCameraPosition = myTransform.position;
+		rotatee.transform.position = myTransform.position;
+		for (float vAngle = 0.0f; vAngle < 360.0f; vAngle += angleIncrement) {
+			for (float hAngle = 0.0f; hAngle < 360.0f; hAngle += angleIncrement) {
+				RotateObjectAroundTarget(initialCameraPosition, rotatee, vAngle, hAngle);
+				if (!Physics.Linecast(rotatee.transform.position, target.transform.position)) {
+					Vector3 goodPosition = rotatee.transform.position;
+					Destroy(rotatee);
+					return goodPosition;
+				} else {
+					Debug.Log("Position of " + rotatee.transform.position + " was not good");
+					RaycastHit hit;
+					Physics.Raycast(rotatee.transform.position, (target.position - rotatee.transform.position), out hit);
+					Debug.Log(hit.collider.gameObject.name);
+				}
+			}
+		}
+		Destroy(rotatee);
+		return Vector3.zero;
+	}
+
+	void RotateObjectAroundTarget(Vector3 initialCameraPosition, GameObject rotatee, float vAngle, float hAngle) {
+		Vector3 rotateeToTarget = rotatee.transform.position - target.transform.position;
+		rotatee.transform.position = initialCameraPosition;
+		rotatee.transform.RotateAround(target.position, Vector3.up, hAngle);
+		Vector3 vRotateAxis;
+		if (Vector3.Angle(rotateeToTarget, Vector3.up) < 1.0f) {
+			vRotateAxis = Vector3.Cross(Vector3.down, rotateeToTarget);
+		} else {
+			vRotateAxis = Vector3.Cross(rotateeToTarget, Vector3.up);
+		}
+		rotatee.transform.RotateAround(target.position, vRotateAxis, vAngle);
 	}
 }

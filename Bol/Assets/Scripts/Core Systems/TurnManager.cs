@@ -105,7 +105,7 @@ public class TurnManager : MonoBehaviour {
 
 		players[curPlayerIndex].GetComponent<Indicator>().indicatorObj.SetActive(false);
 		curPlayerIndex = (curPlayerIndex + 1) % players.Length ;
-		Camera.main.GetComponent<CameraFollowPlayer>().ballLeaveFlight();
+		Camera.main.GetComponent<CameraMan>().ballLeaveFlight();
 		// There might be a better way to do this...
 		foreach(GameObject powerUp in powerUps)
 		{
@@ -120,7 +120,7 @@ public class TurnManager : MonoBehaviour {
             curPlayerPowerUp = players[curPlayerIndex].GetComponent<PlayerPowerUpController>();
 
 
-			Camera.main.GetComponent<CameraFollowPlayer>().target = players[curPlayerIndex].transform;
+			Camera.main.GetComponent<CameraMan>().target = players[curPlayerIndex].transform;
 
 			curPlayerInput.enabled = true;
 			curPlayerControl.enabled = true;

@@ -16,7 +16,7 @@ public class UnifiedInput : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (curInput.GetJump()) {
-			Camera.main.GetComponent<CameraFollowPlayer>().ballEnterFlight();
+			Camera.main.GetComponent<CameraMan>().ballEnterFlight();
 			curPlayer.LaunchInDirection(calculateDirectionVector(), curInput.curPower);
 			curPlayer.GetComponent<Indicator>().toggleActive();
 		}
