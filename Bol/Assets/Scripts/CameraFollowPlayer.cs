@@ -27,7 +27,10 @@ public class CameraFollowPlayer : MonoBehaviour {
         direction = myTransform.position - target.position;
 		if(direction.magnitude >= followDistance && !moving && !rotating && !shifting)
         {
-			StartCoroutine(moveTowards(Vector3.MoveTowards(myTransform.position, new Vector3(target.position.x, myTransform.position.y, target.position.z), direction.magnitude - followDistance), 1.0f));
+			Vector3 moveTowardsPoint = Vector3.MoveTowards(myTransform.position, target.position, (direction.magnitude - followDistance) * 1.25f);
+			Debug.Log("Target too far and not moving and not rotating and not shifting!");
+			Debug.Log("Moving towards " + moveTowardsPoint + ". This point is " + Vector3.Distance(moveTowardsPoint, target.position) + " units away from the target.");
+			StartCoroutine(moveTowards(moveTowardsPoint, 1.0f));
             //myTransform.position = Vector3.MoveTowards(myTransform.position, new Vector3(target.position.x, myTransform.position.y, target.position.z), 1);
 		} else if (direction.magnitude < minimumDistance && !ballInFlight && !backingUp && !shifting) {
 			Debug.Log("Less than minimum distance and not backing up or shifting!");
