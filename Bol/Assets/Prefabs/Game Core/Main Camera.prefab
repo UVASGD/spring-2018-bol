@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 124745143991330008}
   - component: {fileID: 81906448211226438}
   - component: {fileID: 114626440484377262}
+  - component: {fileID: 114880941595359932}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -37,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1814969288072942}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 5.6600003, y: 20.77, z: -9.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -100,7 +101,21 @@ MonoBehaviour:
   target: {fileID: 0}
   minimumDistance: 5
   desiredAngle: 30
-  canRotate: 1
+  ballInFlight: 0
+  verticalAngleLowerBound: 1
+  verticalAngleUpperBound: 90
+--- !u!114 &114880941595359932
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1814969288072942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb402d8787ab24d40a584ca274234393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 114626440484377262}
 --- !u!124 &124745143991330008
 Behaviour:
   m_ObjectHideFlags: 1
