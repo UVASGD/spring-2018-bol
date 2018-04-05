@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33628665063050520}
   - component: {fileID: 23077428729240828}
   - component: {fileID: 64685804520307682}
+  - component: {fileID: 114213667630572908}
   m_Layer: 0
   m_Name: 45 degree pipe
   m_TagString: Untagged
@@ -56,7 +57,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 8d01289992ab20f469b10fc2c5af5735, type: 3}
+  - {fileID: 2100000, guid: b88d2e72a923c4aceb6e20833012119a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -97,3 +98,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 8d01289992ab20f469b10fc2c5af5735, type: 3}
+--- !u!114 &114213667630572908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1368348122040184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11f4ded2a04e542ceb35fa6267bb8d73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alpha_renderer: {fileID: 23077428729240828}
+  raycastedAlpha: 0.2
+  fullAlpha: 1
+  inRaycast: 0

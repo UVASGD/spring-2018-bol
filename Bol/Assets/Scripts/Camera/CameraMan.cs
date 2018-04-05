@@ -122,11 +122,6 @@ public class CameraMan : MonoBehaviour {
 					Vector3 goodPosition = rotatee.transform.position;
 					Destroy(rotatee);
 					return goodPosition;
-				} else {
-					Debug.Log("Position of " + rotatee.transform.position + " was not good");
-					RaycastHit hit;
-					Physics.Raycast(rotatee.transform.position, (target.position - rotatee.transform.position), out hit);
-					Debug.Log(hit.collider.gameObject.name);
 				}
 			}
 		}

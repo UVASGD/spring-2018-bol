@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -160,6 +160,29 @@ Transform:
   m_PrefabParentObject: {fileID: 4877208797048624, guid: 5d586b077dfec4e49ade00925e7d3cde,
     type: 2}
   m_PrefabInternal: {fileID: 15564468}
+--- !u!1 &61350324 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1814969288072942, guid: d8f1fd18110a50142942422682aad0df,
+    type: 2}
+  m_PrefabInternal: {fileID: 1134214854}
+--- !u!114 &61350325 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114626440484377262, guid: d8f1fd18110a50142942422682aad0df,
+    type: 2}
+  m_PrefabInternal: {fileID: 1134214854}
+  m_Script: {fileID: 11500000, guid: 6975c790e56588c4aa556004bd33c2bf, type: 3}
+--- !u!114 &61350326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 61350324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb402d8787ab24d40a584ca274234393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 61350325}
 --- !u!1 &71002612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,7 +1940,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4332122972242434, guid: d8f1fd18110a50142942422682aad0df, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.87
+      value: 20.77
       objectReference: {fileID: 0}
     - target: {fileID: 4332122972242434, guid: d8f1fd18110a50142942422682aad0df, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2435,6 +2458,16 @@ Prefab:
     - target: {fileID: 4582140096949850, guid: 5ebb058eb828911478401187109c3e37, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 64027384209501986, guid: 5ebb058eb828911478401187109c3e37,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23940016716366252, guid: 5ebb058eb828911478401187109c3e37,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5ebb058eb828911478401187109c3e37, type: 2}
