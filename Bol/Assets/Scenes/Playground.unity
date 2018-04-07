@@ -2097,12 +2097,12 @@ Prefab:
     - target: {fileID: 224241974157089688, guid: c48c5a33dfb66e64a964d1ef56c5573d,
         type: 2}
       propertyPath: m_SizeDelta.x
-      value: 55
+      value: 54
       objectReference: {fileID: 0}
     - target: {fileID: 224241974157089688, guid: c48c5a33dfb66e64a964d1ef56c5573d,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 55
+      value: 54
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c48c5a33dfb66e64a964d1ef56c5573d, type: 2}
