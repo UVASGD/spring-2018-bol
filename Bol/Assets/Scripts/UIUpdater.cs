@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class UIUpdater : MonoBehaviour {
 
-    public Text powerUpText;
+	public Image powerUpImage;
 
 	// Use this for initialization
 	void Start () {
-        powerUpText.text = "No PowerUp";
+        powerUpImage.sprite = null;
     }
 	
 	// Update is called once per frame
@@ -21,11 +21,16 @@ public class UIUpdater : MonoBehaviour {
     {
         if (powerUp == null)
         {
-            powerUpText.text = "No PowerUp";
+			powerUpImage.sprite = null;
         }
         else
         {
-            powerUpText.text = "" + powerUp.GetType();
+			var pwrSprite = Resources.Load<Sprite> ("" + powerUp.GetType ());
+			if (pwrSprite != null) {
+				powerUpImage.sprite = pwrSprite;
+			} else {
+				Debug.Log ("Sprite not found.");
+			}
         }
     }
 }
