@@ -72,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1954587069753712}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.239789, y: 0.24999999, z: -6.4268355}
+  m_LocalPosition: {x: 5.89, y: 1, z: -5.2900014}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4148045714784770}
@@ -242,7 +242,7 @@ MonoBehaviour:
   axisDeadzone: 0.1
   powerIncrease: 500
   angleIncrease: 1
-  maxPower: 1000
+  maxPower: 750
 --- !u!135 &135705664448169374
 SphereCollider:
   m_ObjectHideFlags: 1
