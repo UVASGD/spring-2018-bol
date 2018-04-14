@@ -111,7 +111,7 @@ public class TurnManager : MonoBehaviour {
 		// There might be a better way to do this...
 		foreach(GameObject powerUp in powerUps)
 		{
-			powerUp.GetComponent<PowerUpManager>().Respawn(players.Length);
+			powerUp.GetComponentInChildren<PowerUpManager>().Respawn(players.Length);
 		}
 		if (players[curPlayerIndex].GetComponent<PlayerPoints>().PlayerPlaying) {
 			players[curPlayerIndex].GetComponent<Indicator>().indicatorObj.SetActive(true);
