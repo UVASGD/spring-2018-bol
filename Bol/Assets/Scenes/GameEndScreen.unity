@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -237,14 +237,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5612636de275895419495fefc58db265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerOne: {fileID: 1171131263}
-  playerTwo: {fileID: 1806101993}
-  playerThree: {fileID: 1547485908}
-  playerFour: {fileID: 1169815723}
-  scoreOne: 0
-  scoreTwo: 0
-  scoreThree: 0
-  scoreFour: 0
+  PointDisplay:
+  - {fileID: 1171131263}
+  - {fileID: 1806101993}
+  - {fileID: 1547485908}
+  - {fileID: 1169815723}
 --- !u!1 &488342159
 GameObject:
   m_ObjectHideFlags: 0

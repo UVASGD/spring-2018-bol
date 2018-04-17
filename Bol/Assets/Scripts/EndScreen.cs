@@ -11,6 +11,8 @@ public class EndScreen : MonoBehaviour {
 	void Awake()
 	{
 		mainButton.onClick.AddListener (() => OnClickMain ());
+		
+		
 	}
 
 	void OnClickMain()

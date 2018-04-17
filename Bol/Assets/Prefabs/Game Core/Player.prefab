@@ -214,6 +214,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721d3d6ba3e655f40bf9f237af8fcea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TurnManager: {fileID: 114520178661761594, guid: be033ae570255374bbf383eb3326146b,
+    type: 2}
 --- !u!114 &114547094476021034
 MonoBehaviour:
   m_ObjectHideFlags: 1

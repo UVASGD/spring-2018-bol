@@ -4,35 +4,31 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UI_EndScreen : MonoBehaviour {
-
-	public Text playerOne;
-	public Text playerTwo;
-	public Text playerThree;
-	public Text playerFour;
-
-	public int scoreOne;
-	public int scoreTwo;
-	public int scoreThree;
-	public int scoreFour;
+	
+	public Text[] PointDisplay;
 
 	private bool scoresLoaded;
 
 	// Use this for initialization
-	void Start () {
-		scoreOne = 5;
-		scoreTwo = 18;
-		scoreThree = 4;
-		scoreFour = 12;
+	void Start ()
+	{
 		scoresLoaded = false;
 	}
 
 	// Update is called once per frame
 	void Update () {
 		if (!scoresLoaded) {
-			StartCoroutine (writeScore (playerOne, scoreOne));
-			StartCoroutine (writeScore (playerTwo, scoreTwo));
-			StartCoroutine (writeScore (playerThree, scoreThree));
-			StartCoroutine (writeScore (playerFour, scoreFour));
+			for (var index = 0; index < PlayerPoints.Points.Length; index++)
+			{
+				if (index > PointDisplay.Length)
+				{
+					Debug.LogError("Number of Textboxes in End Screen is not enough! " + 
+					               PlayerPoints.Points.Length + " needed, but only " + 
+					               PointDisplay.Length + " textboxes available!");
+					break;
+				}
+				StartCoroutine(writeScore(PointDisplay[index], PlayerPoints.Points[index]));
+			}
 			scoresLoaded = true;
 		}
 	}
@@ -44,7 +40,7 @@ public class UI_EndScreen : MonoBehaviour {
 			if (scoreValue == 0) {
 				scoreWrite.text += "L";
 			}
-			yield return new WaitForSeconds (0.125f);
+			yield return new WaitForSeconds (0.5f);
 		}
 	}
 }

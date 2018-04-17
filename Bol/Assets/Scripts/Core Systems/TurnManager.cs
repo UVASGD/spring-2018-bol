@@ -28,9 +28,10 @@ public class TurnManager : MonoBehaviour {
 	bool firstLoop = true;
 
     // Use this for initialization
-	void Start () {
+	void Start ()
+	{
 		IComparer playerOrderer = new PlayerSorter();
-		players = GameObject.FindGameObjectsWithTag("Player");
+		if (players == null || players.Length == 0) players = GameObject.FindGameObjectsWithTag("Player");
 		Array.Sort(players, playerOrderer);
 		foreach (GameObject player in players) {
 			if (player.GetComponent<PlayerInput>() == null || player.GetComponent<PlayerControl>() == null) {
@@ -44,7 +45,7 @@ public class TurnManager : MonoBehaviour {
 			playersWon[i] = false;
 		}
 		players[curPlayerIndex].GetComponent<PlayerInput>().enabled = true;
-		StartCoroutine(checkTurnSwitch());
+		StartCoroutine(CheckTurnSwitch());
 	}
 	
 	// Update is called once per frame
@@ -52,14 +53,14 @@ public class TurnManager : MonoBehaviour {
 		
 	}
 
-	bool AllPlayersWon() {
+	private bool AllPlayersWon() {
 		foreach (bool b in playersWon) {
 			if (!b) return false;
 		}
 		return true;
 	}
 
-	IEnumerator checkTurnSwitch() {
+	IEnumerator CheckTurnSwitch() {
 		while (gameObject.activeInHierarchy) {
 			PlayerControl curPlayerControl = players[curPlayerIndex].GetComponent<PlayerControl>();
 			Rigidbody curPlayerRB = players[curPlayerIndex].GetComponent<Rigidbody>();
@@ -156,12 +157,38 @@ public class TurnManager : MonoBehaviour {
 		return players[curPlayerIndex].GetComponent<PlayerControl>();
 	}
 
-	public class PlayerSorter : IComparer  {
+	private class PlayerSorter : IComparer  {
 
-		// Calls CaseInsensitiveComparer.Compare on the monster name string.
+		// Calls CaseInsensitiveComparer.Compare on the player name string.
 		int IComparer.Compare( System.Object x, System.Object y )  {
+			if (x == null) return 1;
+			if (y == null) return -1;
 			return( (new CaseInsensitiveComparer()).Compare( ((GameObject)x).name, ((GameObject)y).name) );
 		}
 
+	}
+
+	public int GetNumPlayers()
+	{
+		if (players == null || players.Length == 0)
+		{
+			players = GameObject.FindGameObjectsWithTag("Player");
+		}
+
+		return players.Length;
+	}
+
+	public int IndexOfPlayer(GameObject player)
+	{
+		int playersLength = GetNumPlayers();
+		for (int playerIndex = 0; playerIndex < playersLength; playerIndex++)
+		{
+			if (player.name == players[playerIndex].name)
+			{
+				return playerIndex;
+			}
+		}
+
+		return -1;
 	}
 }
