@@ -26,7 +26,6 @@ public class TurnManager : MonoBehaviour {
 	int firstWinningPlayerIndex = -1;
 	bool[] playersWon;
 
-	bool firstLoop = true;
 
     // Use this for initialization
 	void Start ()
@@ -72,11 +71,7 @@ public class TurnManager : MonoBehaviour {
 				PlayerInput curPlayerInput = players[curPlayerIndex].GetComponent<PlayerInput>();
 				PlayerPowerUpController curPlayerPowerUp = players[curPlayerIndex].GetComponent<PlayerPowerUpController>();
 				PlayerPoints curPlayerPoints = players[curPlayerIndex].GetComponent<PlayerPoints>();
-				if (firstLoop)
-				{
-					players[curPlayerIndex].GetComponent<Indicator>().indicatorObj.SetActive(true);
-					firstLoop = false;
-				}
+				
 
 				uiUpdater.UpdatePowerUpText(curPlayerPowerUp.GetStoredPowerUp());
 				
@@ -138,7 +133,6 @@ public class TurnManager : MonoBehaviour {
 		curPlayerControl.enabled = false;
 		curPlayerControl.endTurn();
 
-		players[curPlayerIndex].GetComponent<Indicator>().indicatorObj.SetActive(false);
 		curPlayerIndex = (curPlayerIndex + 1) % players.Length;
 		Camera.main.GetComponent<CameraMan>().ballLeaveFlight();
 		// There might be a better way to do this...
@@ -163,7 +157,6 @@ public class TurnManager : MonoBehaviour {
 			}
 		}
 		
-		players[curPlayerIndex].GetComponent<Indicator>().indicatorObj.SetActive(true);
 
 		curPlayerControl = players[curPlayerIndex].GetComponent<PlayerControl>();
 		curPlayerRB = players[curPlayerIndex].GetComponent<Rigidbody>();
