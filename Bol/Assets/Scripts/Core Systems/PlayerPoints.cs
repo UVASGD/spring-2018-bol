@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPoints : MonoBehaviour {
-    public int PointTotal { get; set; }
+public class PlayerPoints : MonoBehaviour
+{
+    public int PointTotal;
 
-    public bool PlayerPlaying { get; set; }
+    public bool PlayerPlaying;
 
     public static int[] Points;
 

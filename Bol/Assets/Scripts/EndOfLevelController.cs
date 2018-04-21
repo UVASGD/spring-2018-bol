@@ -36,7 +36,9 @@ public class EndOfLevelController : MonoBehaviour {
 		}
 	}
 	private IEnumerator CheckStay(Collider other) {
+		Debug.Log("Checking if the player stayed");
 		yield return new WaitForSeconds(3);
+		Debug.Log("The player stayed!");
 		PlayerStayed(other);
 
 	}
