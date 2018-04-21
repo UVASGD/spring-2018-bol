@@ -5,8 +5,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class TurnManager : MonoBehaviour {
+	
+	public int turnsAfterWinUntilEndGame = 5;
 
-	public GameObject[] players;
+	private GameObject[] players = null;
 	public UnifiedInput inputController;
 
     public UIUpdater uiUpdater;
@@ -28,11 +30,16 @@ public class TurnManager : MonoBehaviour {
 
 	bool firstLoop = true;
 
+	void Awake()
+	{
+		players = null;
+		GetPlayers();
+	}
+	
     // Use this for initialization
 	void Start ()
 	{
 		IComparer playerOrderer = new PlayerSorter();
-		if (players == null || players.Length == 0) players = GameObject.FindGameObjectsWithTag("Player");
 		Array.Sort(players, playerOrderer);
 		foreach (GameObject player in players) {
 			if (player.GetComponent<PlayerInput>() == null || player.GetComponent<PlayerControl>() == null) {
@@ -48,11 +55,6 @@ public class TurnManager : MonoBehaviour {
 		players[curPlayerIndex].GetComponent<PlayerInput>().enabled = true;
 		StartCoroutine(CheckTurnSwitch());
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	private bool AllPlayersWon() {
 		foreach (bool b in playersWon) {
@@ -66,7 +68,6 @@ public class TurnManager : MonoBehaviour {
 		{
 			if (gameObject.activeInHierarchy)
 			{
-				Debug.Log("Checking if turn switch!");
 				PlayerControl curPlayerControl = players[curPlayerIndex].GetComponent<PlayerControl>();
 				Rigidbody curPlayerRB = players[curPlayerIndex].GetComponent<Rigidbody>();
 				PlayerInput curPlayerInput = players[curPlayerIndex].GetComponent<PlayerInput>();
@@ -80,25 +81,16 @@ public class TurnManager : MonoBehaviour {
 
 				uiUpdater.UpdatePowerUpText(curPlayerPowerUp.GetStoredPowerUp());
 				
-				if (turnsSinceWin > 1 || AllPlayersWon())
+				if (turnsSinceWin > turnsAfterWinUntilEndGame || AllPlayersWon())
 				{
 					// End the game!
 					Debug.Log("GAME HAS ENDED!");
 					SceneManager.LoadScene("GameEndScreen");
 				}
-				else if (firstWinningPlayerIndex != -1)
-				{
-					Debug.Log("Turns Since Win: " + turnsSinceWin);
-				}
-				else
-				{
-					Debug.Log("First Winning Player Index: " + firstWinningPlayerIndex);
-				}
 				
 				if (curPlayerControl.getPossibleTurnOver() &&
 				    (curPlayerRB.velocity.magnitude < minimumVelocity || !curPlayerPoints.PlayerPlaying))
 				{
-					Debug.Log("Beginning to switch turns!");
 					if (!curPlayerPoints.PlayerPlaying)
 					{
 						Debug.Log("Player has won!");
@@ -107,7 +99,6 @@ public class TurnManager : MonoBehaviour {
 							firstWinningPlayerIndex = curPlayerIndex;
 							Debug.Log("First player has won!");
 						}
-						Debug.LogFormat("Setting player at index {0} to true", curPlayerIndex);
 						playersWon[curPlayerIndex] = true;
 					}
 
@@ -116,6 +107,13 @@ public class TurnManager : MonoBehaviour {
 				else
 				{
 					confirming = false; // The player is moving, so we are no longer confirmed.
+				}
+				
+				if (AllPlayersWon())
+				{
+					// End the game!
+					Debug.Log("GAME HAS ENDED!");
+					SceneManager.LoadScene("GameEndScreen");
 				}
 
 				yield return new WaitForSeconds(WAIT_TIME);
@@ -222,12 +220,18 @@ public class TurnManager : MonoBehaviour {
 
 	}
 
-	public int GetNumPlayers()
+	private void GetPlayers()
 	{
+		
 		if (players == null || players.Length == 0)
 		{
 			players = GameObject.FindGameObjectsWithTag("Player");
 		}
+	}
+
+	public int GetNumPlayers()
+	{
+		GetPlayers();
 
 		return players.Length;
 	}

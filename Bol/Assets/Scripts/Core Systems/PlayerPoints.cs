@@ -33,6 +33,12 @@ public class PlayerPoints : MonoBehaviour
         }
     }
 
+    public void IncrementScore(int inc)
+    {
+        PointTotal += inc;
+        Points[playerIndex] = PointTotal;
+    }
+
     public static void ResetPoints()
     {
         for (var index = 0; index < Points.Length; index++)
