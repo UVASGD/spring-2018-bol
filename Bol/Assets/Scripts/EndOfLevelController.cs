@@ -7,6 +7,10 @@ using UnityEngine.SceneManagement;
 public class EndOfLevelController : MonoBehaviour {
 
 	private Coroutine stayDetect;
+
+	public int pointsForWinning = 5;
+
+	public int additionalPointsForWinningFirst = 5;
 	// Use this for initialization
 	void Start () {
 		
@@ -48,9 +52,9 @@ public class EndOfLevelController : MonoBehaviour {
 		pPoints.PlayerPlaying = false;
 		if (!pPoints.TurnManager.PlayerHasWon())
 		{
-			pPoints.IncrementScore(5);
+			pPoints.IncrementScore(additionalPointsForWinningFirst);
 		}
-		pPoints.IncrementScore(5);
+		pPoints.IncrementScore(pointsForWinning);
 		other.gameObject.SetActive(false);
 		//Add the points
 		//Remove the player object, activate a flag for that player having finished
