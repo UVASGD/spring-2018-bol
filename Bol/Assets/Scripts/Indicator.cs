@@ -8,12 +8,11 @@ public class Indicator : MonoBehaviour {
 	public PlayerInput curInput;
     public Rigidbody rb;
 
-	public float minScale = 0.25f;
-	public float maxScale = 1.0f;
-    float oldHorizAngle;
-    float oldVertAngle;
+    float horizAngle;
+    float vertAngle;
 
     public int resolution;
+    public int maxDistance = 100;
     float velocity;
     float radAngle;
     float g;
@@ -31,8 +30,8 @@ public class Indicator : MonoBehaviour {
         {
             rb = GetComponent<Rigidbody>();
         }
-        oldHorizAngle = curInput.horizontalAngle;
-        oldVertAngle = curInput.verticalAngle;
+        horizAngle = curInput.horizontalAngle;
+        vertAngle = curInput.verticalAngle;
 	}
 
 	Vector3 calculateDirectionVector() {
@@ -58,11 +57,11 @@ public class Indicator : MonoBehaviour {
 
     bool AnglesChanged()
     {
-        bool result = (oldHorizAngle != curInput.horizontalAngle) || (oldVertAngle != curInput.verticalAngle);
+        bool result = (horizAngle != curInput.horizontalAngle) || (vertAngle != curInput.verticalAngle);
         if (result)
         {
-            oldVertAngle = curInput.verticalAngle;
-            oldHorizAngle = curInput.horizontalAngle;
+            vertAngle = curInput.verticalAngle;
+            horizAngle = curInput.horizontalAngle;
         }
         return result;
     }
@@ -70,9 +69,8 @@ public class Indicator : MonoBehaviour {
     Vector3[] CalculateArray()
     {
         Vector3[] arcArray = new Vector3[resolution + 1];
-        radAngle = curInput.verticalAngle * Mathf.Deg2Rad;
-        float maxDistance = (velocity * velocity * Mathf.Sin(2 * radAngle));
-        Quaternion rotation = Quaternion.AngleAxis(curInput.horizontalAngle - 90, Vector3.up); // Not sure why it needs the -90, but that's what made it work...
+        radAngle = vertAngle * Mathf.Deg2Rad;
+        Quaternion rotation = Quaternion.AngleAxis(horizAngle - 90, Vector3.up); // Not sure why it needs the -90, but that's what made it work...
         for(int i = 0; i <= resolution; i++)
         {
             float t = (float)i / (float)resolution;
@@ -89,6 +87,11 @@ public class Indicator : MonoBehaviour {
     }
 
 	public void toggleActive() {
+        if (lr.enabled)
+        {
+            lr.positionCount = 0;
+            lr.SetPositions(new Vector3[0]);
+        }
         lr.enabled = !lr.enabled;
 	}
 }
