@@ -183,8 +183,12 @@ public class TurnManager : MonoBehaviour {
 		confirming = false;
 	}
 
-	public bool GetSwitchStatus(){
-		return switching;
+	public int GetCurrentPlayerIndex(){
+		return curPlayerIndex;
+	}
+
+	public bool GetConfirmStatus(){
+		return confirming;
 	}
 
 	public PlayerInput GetCurrentPlayerInput() {
