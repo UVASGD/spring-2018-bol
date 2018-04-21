@@ -137,6 +137,10 @@ public class TurnManager : MonoBehaviour {
 		confirming = false;
 	}
 
+	public bool GetSwitchStatus(){
+		return switching;
+	}
+
 	public PlayerInput GetCurrentPlayerInput() {
 		return players[curPlayerIndex].GetComponent<PlayerInput>();
 	}
