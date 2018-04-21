@@ -42,9 +42,15 @@ public class EndOfLevelController : MonoBehaviour {
 		PlayerStayed(other);
 
 	}
-	private void PlayerStayed(Collider other) {
-        other.gameObject.GetComponent<PlayerPoints>().PlayerPlaying = false;
-		other.gameObject.GetComponent<PlayerPoints>().IncrementScore(5);
+	private void PlayerStayed(Collider other)
+	{
+		PlayerPoints pPoints = other.gameObject.GetComponent<PlayerPoints>();
+		pPoints.PlayerPlaying = false;
+		if (!pPoints.TurnManager.PlayerHasWon())
+		{
+			pPoints.IncrementScore(5);
+		}
+		pPoints.IncrementScore(5);
 		other.gameObject.SetActive(false);
 		//Add the points
 		//Remove the player object, activate a flag for that player having finished

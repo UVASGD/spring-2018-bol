@@ -223,7 +223,7 @@ public class TurnManager : MonoBehaviour {
 	private void GetPlayers()
 	{
 		
-		if (players == null || players.Length == 0)
+		if (players == null || players.Length == 0 || players[0] == null)
 		{
 			players = GameObject.FindGameObjectsWithTag("Player");
 		}
@@ -248,5 +248,10 @@ public class TurnManager : MonoBehaviour {
 		}
 
 		return -1;
+	}
+
+	public bool PlayerHasWon()
+	{
+		return firstWinningPlayerIndex != -1;
 	}
 }
