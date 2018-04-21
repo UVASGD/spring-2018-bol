@@ -13,7 +13,7 @@ public class ResetPosition : MonoBehaviour {
 	void Start () {
 		if (players == null || players.Length == 0) players = GameObject.FindGameObjectsWithTag("Player");
 		foreach (GameObject player in players) {
-			playerPositions
+			print ("test");
 		}
 		checkSwitch = FindObjectOfType<TurnManager> ();
 	}
