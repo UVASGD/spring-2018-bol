@@ -10,7 +10,13 @@ public class UnifiedInput : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		if (!curInput || !curPlayer || !curPowerup)
+		{
+			GameObject player = FindObjectOfType<TurnManager>().GetCurrentPlayer();
+			curInput = player.GetComponent<PlayerInput>();
+			curPlayer = player.GetComponent<PlayerControl>();
+			curPowerup = player.GetComponent<PlayerPowerUpController>();
+		}
 	}
 	
 	// Update is called once per frame
