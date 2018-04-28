@@ -26,7 +26,7 @@ public class RocketBoost : PowerUp {
         Vector3 newVelocity = rb.velocity;
         newVelocity.y = 0;
         newVelocity.Normalize();
-        newVelocity *= 50;
+        newVelocity *= 20;
         rb.velocity = newVelocity;
         Debug.Log("ZOOOOOM");
     }
