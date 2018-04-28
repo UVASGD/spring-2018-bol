@@ -339,12 +339,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Score B\xF6L in G\xF6L.\n\nWASD: Move strike point.\nArrow keys: Move camera.\nSpace:
-    Hold to charge, release to shoot.\nP: activate a powerup (if held and your turn).\n\nPowerups:\n\n\tRocket
-    Boost: ++ Horizontal Velocity, -- Vertical Velocity\n\n\tBrake: -- Horizontal
-    Velocity\n\n\tMoon Jump: ++ Vertical Velocity\n\n\tBomb: Explodes after short
-    delay, knocking away all nearby B\xF6Ls.\n\n\tGravity Vortex: Explodes after short
-    delay, pulling in all nearby B\xF6Ls.\n\nHighest point count wins."
+  m_Text: "Score B\xF6L in G\xF6L. Highest score wins.\n\nWASD: Move strike point.\nArrow
+    keys: Move camera.\nSpace: Hold to charge, release to shoot.\nP: activate a powerup
+    (if held and your turn).\n\nPowerups:\n\n\tRocket Boost: ++ Horizontal Velocity,
+    -- Vertical Velocity\n\n\tBrake: -- Horizontal Velocity\n\n\tMoon Jump: ++ Vertical
+    Velocity\n\n\tBomb: Explodes after short delay, knocking away all nearby B\xF6Ls.\n\n\tGravity
+    Vortex: Implodes after short delay, pulling in all nearby B\xF6Ls.\n\nHighest
+    point count wins."
 --- !u!222 &176468310
 CanvasRenderer:
   m_ObjectHideFlags: 0

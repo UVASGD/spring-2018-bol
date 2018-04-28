@@ -7,6 +7,10 @@ using UnityEngine.SceneManagement;
 public class EndOfLevelController : MonoBehaviour {
 
 	private Coroutine stayDetect;
+
+	public int pointsForWinning = 5;
+
+	public int additionalPointsForWinningFirst = 5;
 	// Use this for initialization
 	void Start () {
 		
@@ -36,13 +40,23 @@ public class EndOfLevelController : MonoBehaviour {
 		}
 	}
 	private IEnumerator CheckStay(Collider other) {
+		Debug.Log("Checking if the player stayed");
 		yield return new WaitForSeconds(3);
+		Debug.Log("The player stayed!");
 		PlayerStayed(other);
 
 	}
-	private void PlayerStayed(Collider other) {
-        other.gameObject.GetComponent<PlayerPoints>().PlayerPlaying = false;
-        //Add the points
+	private void PlayerStayed(Collider other)
+	{
+		PlayerPoints pPoints = other.gameObject.GetComponent<PlayerPoints>();
+		pPoints.PlayerPlaying = false;
+		if (!pPoints.TurnManager.PlayerHasWon())
+		{
+			pPoints.IncrementScore(additionalPointsForWinningFirst);
+		}
+		pPoints.IncrementScore(pointsForWinning);
+		other.gameObject.SetActive(false);
+		//Add the points
 		//Remove the player object, activate a flag for that player having finished
 		//Destroy (this.gameObject);
 	}

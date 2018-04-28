@@ -22,6 +22,11 @@ public class PlayerControl : MonoBehaviour {
 	void Update () {
 		if (inFlight) {
 			curTimer += Time.deltaTime;
+            if (rb.velocity.magnitude >= 18f)
+            {
+                //This probably shouldn't happen, the real expected max is around 18.75, if the print happens around there, you should be fine.
+                Debug.LogError("Velocity exceeded (or got close to) expected max of ~18: " + rb.velocity.magnitude);
+            }
 		}
 	}
 		

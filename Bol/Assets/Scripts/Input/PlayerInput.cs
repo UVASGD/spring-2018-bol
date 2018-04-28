@@ -4,22 +4,18 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour {
 
-	[SerializeField]
 	public float horizontalAngle {
 		get; private set;
 	}
 
-	[SerializeField]
 	public float verticalAngle {
 		get; private set;
 	}
 
-	[SerializeField]
 	public float curPower {
 		get; private set;
 	}
 
-	[SerializeField]
 	public bool jump {
 		get; private set;
 	}
