@@ -223,6 +223,12 @@ public class TurnManager : MonoBehaviour {
 		}
 	}
 
+	public GameObject GetCurrentPlayer()
+	{
+		GetPlayers();
+		return players[curPlayerIndex];
+	}
+
 	public int GetNumPlayers()
 	{
 		GetPlayers();
