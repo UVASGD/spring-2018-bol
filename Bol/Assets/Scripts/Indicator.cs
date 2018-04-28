@@ -12,10 +12,12 @@ public class Indicator : MonoBehaviour {
     float vertAngle;
 
     public int resolution;
-    public int maxDistance = 100;
+    public int maxHorizontalDistance = 50;
+    public int maxArcLength = 15; // Not exact, roughly.
     float velocity;
     float radAngle;
     float g;
+    Vector3 myPos;
 
 	// Use this for initialization
 	void Start () {
@@ -68,13 +70,20 @@ public class Indicator : MonoBehaviour {
 
     Vector3[] CalculateArray()
     {
+        myPos = gameObject.transform.position;
         Vector3[] arcArray = new Vector3[resolution + 1];
         radAngle = vertAngle * Mathf.Deg2Rad;
         Quaternion rotation = Quaternion.AngleAxis(horizAngle - 90, Vector3.up); // Not sure why it needs the -90, but that's what made it work...
         for(int i = 0; i <= resolution; i++)
         {
             float t = (float)i / (float)resolution;
-            arcArray[i] = rotation * CalculateArcPoint(t, maxDistance);
+            arcArray[i] = (rotation * CalculateArcPoint(t, maxHorizontalDistance)) + myPos;
+            Vector3 difference = arcArray[i] - myPos;
+            if(difference.magnitude >= maxArcLength)
+            {
+                lr.positionCount = i + 1;
+                break;
+            }
         }
         return arcArray;
     }
