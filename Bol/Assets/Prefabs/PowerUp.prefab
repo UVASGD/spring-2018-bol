@@ -66,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1225506383426118}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.0308743, y: 1.4519105, z: -0.59014815}
+  m_LocalPosition: {x: 8.898511, y: 0.42677677, z: -8.774979}
   m_LocalScale: {x: 0.5, y: 0.50000006, z: 0.50000024}
   m_Children:
   - {fileID: 4481377647141578}
@@ -87,7 +87,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 43dbbd7c93948c347ac15ab1649ea41a, type: 2}
+  - {fileID: 2100000, guid: bceee15f1fdadcd4c9b0be08a7949052, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
