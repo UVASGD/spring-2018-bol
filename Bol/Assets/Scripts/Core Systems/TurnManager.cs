@@ -22,7 +22,7 @@ public class TurnManager : MonoBehaviour {
 
     private GameObject[] powerUps;
 
-	const int WAIT_TIME = 3;
+	const int WAIT_TIME = 1;
 
 	int turnsSinceWin = 0;
 	int firstWinningPlayerIndex = -1;
