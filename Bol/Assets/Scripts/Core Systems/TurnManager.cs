@@ -22,7 +22,7 @@ public class TurnManager : MonoBehaviour {
 
     private GameObject[] powerUps;
 
-	const int WAIT_TIME = 3;
+	const int WAIT_TIME = 1;
 
 	int turnsSinceWin = 0;
 	int firstWinningPlayerIndex = -1;
@@ -52,8 +52,7 @@ public class TurnManager : MonoBehaviour {
 			playersWon[i] = false;
 		}
 		players[curPlayerIndex].GetComponent<PlayerInput>().enabled = true;
-		if (!players[curPlayerIndex].GetComponent<Indicator>().lr.enabled) 
-			players[curPlayerIndex].GetComponent<Indicator>().toggleActive();
+	    players[curPlayerIndex].GetComponent<Indicator>().setActive(true);
 		StartCoroutine(CheckTurnSwitch());
 	}
 
@@ -135,7 +134,7 @@ public class TurnManager : MonoBehaviour {
 
 		curPlayerIndex = (curPlayerIndex + 1) % players.Length;
 		Camera.main.GetComponent<CameraMan>().ballLeaveFlight();
-		players[curPlayerIndex].GetComponent<Indicator>().toggleActive();
+		players[curPlayerIndex].GetComponent<Indicator>().setActive(true);
 		// There might be a better way to do this...
 		foreach(GameObject powerUp in powerUps)
 		{
@@ -169,7 +168,6 @@ public class TurnManager : MonoBehaviour {
 
 		curPlayerInput.enabled = true;
 		curPlayerControl.enabled = true;
-		curPlayerPowerUp.EndTurn();
 
 		inputController.curInput = curPlayerInput;
 		inputController.curPlayer = curPlayerControl;
