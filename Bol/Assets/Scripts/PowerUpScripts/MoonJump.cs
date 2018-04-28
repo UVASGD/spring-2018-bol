@@ -6,11 +6,11 @@ public class MoonJump : PowerUp
 {
     // Use this for initialization
     void Start() {
-        Debug.Log("MoonJump activated");
+
     }
 
     public MoonJump(){
-        
+        endsOnTurn = true;
     }
 
     // Update is called once per frame
@@ -18,7 +18,6 @@ public class MoonJump : PowerUp
 
     public override void UndoEffect()
     {
-        Debug.Log("undoing gravity!");
         Physics.gravity *= 2;
     }
 
