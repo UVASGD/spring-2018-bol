@@ -18,6 +18,7 @@ public class MoonJump : PowerUp
 
     public override void UndoEffect()
     {
+        Debug.Log("undoing gravity!");
         Physics.gravity *= 2;
     }
 
