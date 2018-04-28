@@ -18,7 +18,7 @@ public class UnifiedInput : MonoBehaviour {
 		if (curInput.GetJump()) {
 			Camera.main.GetComponent<CameraMan>().ballEnterFlight();
 			curPlayer.LaunchInDirection(calculateDirectionVector(), curInput.curPower);
-			curPlayer.GetComponent<Indicator>().toggleActive();
+			curPlayer.GetComponent<Indicator>().setActive(false);
 		}
         if (curInput.GetPowerUp())
         {

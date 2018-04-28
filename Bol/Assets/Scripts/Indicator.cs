@@ -94,4 +94,14 @@ public class Indicator : MonoBehaviour {
         }
         lr.enabled = !lr.enabled;
 	}
+
+    public void setActive(bool value)
+    {
+        if (!value)
+        {
+            lr.positionCount = 0;
+            lr.SetPositions(new Vector3[0]);
+        }
+        lr.enabled = value;
+    }
 }
