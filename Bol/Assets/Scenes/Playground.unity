@@ -872,6 +872,16 @@ Prefab:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114024006191848310, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 120991510019226232, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb, type: 2}
   m_IsPrefabParent: 0
@@ -1391,19 +1401,7 @@ Prefab:
         type: 2}
       propertyPath: players.Array.data[3]
       value: 
-<<<<<<< HEAD
-      objectReference: {fileID: 675693516}
-<<<<<<< HEAD
-    - target: {fileID: 114520178661761594, guid: be033ae570255374bbf383eb3326146b,
-        type: 2}
-      propertyPath: minimumVelocity
-      value: 0.5
-      objectReference: {fileID: 0}
-=======
       objectReference: {fileID: 896550265}
->>>>>>> e5b48f5a63e8523e9521c54a779ff661589de790
-=======
->>>>>>> parent of 1d8a7cc... Let the colour madness begin
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be033ae570255374bbf383eb3326146b, type: 2}
   m_IsPrefabParent: 0
@@ -1454,15 +1452,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4346873301654406, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb, type: 2}
       propertyPath: m_LocalPosition.x
-<<<<<<< HEAD
-<<<<<<< HEAD
-      value: -0.74
-=======
       value: -0.5
->>>>>>> e5b48f5a63e8523e9521c54a779ff661589de790
-=======
-      value: -0.73
->>>>>>> parent of 1d8a7cc... Let the colour madness begin
       objectReference: {fileID: 0}
     - target: {fileID: 4346873301654406, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1470,15 +1460,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4346873301654406, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb, type: 2}
       propertyPath: m_LocalPosition.z
-<<<<<<< HEAD
-<<<<<<< HEAD
-      value: -6.43
-=======
       value: -6.5
->>>>>>> e5b48f5a63e8523e9521c54a779ff661589de790
-=======
-      value: -6.45
->>>>>>> parent of 1d8a7cc... Let the colour madness begin
       objectReference: {fileID: 0}
     - target: {fileID: 4346873301654406, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1503,6 +1485,11 @@ Prefab:
     - target: {fileID: 1954587069753712, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb, type: 2}
       propertyPath: m_Name
       value: Player 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 120991510019226232, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb, type: 2}
@@ -1859,15 +1846,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4346873301654406, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb, type: 2}
       propertyPath: m_LocalPosition.x
-<<<<<<< HEAD
-<<<<<<< HEAD
-      value: 0.26
-=======
       value: 0.5
->>>>>>> e5b48f5a63e8523e9521c54a779ff661589de790
-=======
-      value: 0.23
->>>>>>> parent of 1d8a7cc... Let the colour madness begin
       objectReference: {fileID: 0}
     - target: {fileID: 4346873301654406, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1875,15 +1854,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4346873301654406, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb, type: 2}
       propertyPath: m_LocalPosition.z
-<<<<<<< HEAD
-<<<<<<< HEAD
-      value: -6.43
-=======
       value: -6.5
->>>>>>> e5b48f5a63e8523e9521c54a779ff661589de790
-=======
-      value: -6.4
->>>>>>> parent of 1d8a7cc... Let the colour madness begin
       objectReference: {fileID: 0}
     - target: {fileID: 4346873301654406, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1933,6 +1904,16 @@ Prefab:
     - target: {fileID: 1954587069753712, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb, type: 2}
       propertyPath: m_Layer
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114024006191848310, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 120991510019226232, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb, type: 2}
@@ -2499,7 +2480,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4346873301654406, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -7.36
+      value: -7.5
       objectReference: {fileID: 0}
     - target: {fileID: 4346873301654406, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb, type: 2}
       propertyPath: m_LocalRotation.x
@@ -2524,6 +2505,16 @@ Prefab:
     - target: {fileID: 1954587069753712, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb, type: 2}
       propertyPath: m_Name
       value: Player 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114024006191848310, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 120991510019226232, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ac7bdfabcf0e874c88f20d42bc81bfb, type: 2}
