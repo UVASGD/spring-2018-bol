@@ -10,19 +10,22 @@ public class MoonJump : PowerUp
     }
 
     public MoonJump(){
-        endsOnTurn = true;
+        endsOnTurn = false;
     }
 
     // Update is called once per frame
     void Update() { }
 
-    public override void UndoEffect()
+    public override bool UndoEffect()
     {
-        Physics.gravity *= 2;
+        Physics.gravity = Physics.gravity * 2;
+        return true;
     }
 
     public override void PowerUpEffect()
     {
+        if (used) return;
+        used = true;
         //Debug.Log("MoonJump PowerUpEffect activated");
         Rigidbody playerAtt = player.GetComponent<Rigidbody>();
         //Debug.Log(playerAtt.velocity);
@@ -34,7 +37,7 @@ public class MoonJump : PowerUp
         playerAtt.velocity = newVelocity;
         //Debug.Log(playerAtt.velocity);
 
-        Physics.gravity /= 2;
+        Physics.gravity = Physics.gravity / 2;
 
         //need to figure out how to change gravity on this one object...
         //maybe apply upward force or increase drag
