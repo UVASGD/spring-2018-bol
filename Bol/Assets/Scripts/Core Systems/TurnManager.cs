@@ -254,4 +254,16 @@ public class TurnManager : MonoBehaviour {
 	{
 		return firstWinningPlayerIndex != -1;
 	}
+
+	public int NumberOfPlayersWon()
+	{
+		int numOfPlayersWon = 0;
+		
+		foreach (var b in playersWon)
+		{
+			if (b) numOfPlayersWon++;
+		}
+
+		return numOfPlayersWon;
+	}
 }
