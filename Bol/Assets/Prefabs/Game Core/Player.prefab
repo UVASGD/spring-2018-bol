@@ -119,8 +119,9 @@ MonoBehaviour:
   lr: {fileID: 0}
   curInput: {fileID: 114703963969943738}
   rb: {fileID: 0}
-  resolution: 50
-  maxDistance: 75
+  resolution: 30
+  maxHorizontalDistance: 10
+  maxArcLength: 15
 --- !u!114 &114129115030923068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -263,7 +264,7 @@ LineRenderer:
     alignment: 0
     textureMode: 0
     generateLightingData: 0
-  m_UseWorldSpace: 0
+  m_UseWorldSpace: 1
   m_Loop: 0
 --- !u!135 &135705664448169374
 SphereCollider:
