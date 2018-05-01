@@ -34,7 +34,7 @@ public class PlayerPowerUpController : MonoBehaviour {
 	}
     public void UsePowerUp()
     {
-        if (storedPowerUp != null)
+        if (storedPowerUp != null && !storedPowerUp.WasUsed)
         {
             Debug.Log(gameObject.name + "Using PowerUp");
             storedPowerUp.PowerUpEffect();
@@ -69,10 +69,12 @@ public class PlayerPowerUpController : MonoBehaviour {
 
     public void EndTurn()
     {
-        if (storedPowerUp != null && storedPowerUp.EndsOnTurn)
+        if (storedPowerUp != null && storedPowerUp.WasUsed)
         {
-            storedPowerUp.UndoEffect();
-			storedPowerUp = null;
+            if (storedPowerUp.UndoEffect())
+            {
+                storedPowerUp = null;
+            }
         }
     }
 

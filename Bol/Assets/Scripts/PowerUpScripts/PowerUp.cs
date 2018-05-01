@@ -6,6 +6,7 @@ public abstract class PowerUp {
 
     protected GameObject player;
     protected bool endsOnTurn;
+    protected bool used;
 
     public bool EndsOnTurn
     {
@@ -33,6 +34,19 @@ public abstract class PowerUp {
         }
     }
 
+    public bool WasUsed
+    {
+        get
+        {
+            return used;
+        }
+
+        set
+        {
+            used = value;
+        }
+    }
+
 
     // This is a superclass. All powerups inherit from this class
     public PowerUp()
@@ -52,7 +66,8 @@ public abstract class PowerUp {
 
     abstract public void PowerUpEffect();
 
-    public virtual void UndoEffect() {
+    public virtual bool UndoEffect() { //Returns whether or not to delete the powerup (true = delete)
         Debug.Log("The Called Powerup does not have an undo effect.");
+        return true;
     }
 }

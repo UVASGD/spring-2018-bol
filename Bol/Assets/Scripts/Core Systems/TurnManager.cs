@@ -93,7 +93,7 @@ public class TurnManager : MonoBehaviour {
 						if (firstWinningPlayerIndex == -1)
 						{
 							firstWinningPlayerIndex = curPlayerIndex;
-							Debug.Log("First player has won!");
+							Debug.Log("Player" + (curPlayerIndex + 1) +" has won!");
 						}
 						playersWon[curPlayerIndex] = true;
 					}
