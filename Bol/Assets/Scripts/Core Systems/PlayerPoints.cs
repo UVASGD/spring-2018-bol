@@ -10,7 +10,7 @@ public class PlayerPoints : MonoBehaviour
 
     public static int[] Points;
 
-    public TurnManager TurnManager;
+    public TurnManager turnManager;
 
     private int playerIndex;
     
@@ -18,9 +18,9 @@ public class PlayerPoints : MonoBehaviour
     void Start () {
         PointTotal = 0;
         playerPlaying = true;
-        if (TurnManager == null) TurnManager = FindObjectOfType<TurnManager>();
-        Points = new int[TurnManager.GetNumPlayers()];
-        playerIndex = TurnManager.IndexOfPlayer(gameObject);
+        if (turnManager == null) turnManager = FindObjectOfType<TurnManager>();
+        Points = new int[turnManager.GetNumPlayers()];
+        playerIndex = turnManager.IndexOfPlayer(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)

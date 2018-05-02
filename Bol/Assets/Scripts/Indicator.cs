@@ -21,14 +21,14 @@ public class Indicator : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if (!curInput) {
+		if (curInput == null) {
 			curInput = GetComponent<PlayerInput>();
 		}
-        if (!lr)
+        if (lr == null)
         {
             lr = GetComponent<LineRenderer>();
         }
-        if (!rb)
+        if (rb == null)
         {
             rb = GetComponent<Rigidbody>();
         }

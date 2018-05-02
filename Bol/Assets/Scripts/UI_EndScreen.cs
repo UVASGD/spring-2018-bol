@@ -34,7 +34,11 @@ public class UI_EndScreen : MonoBehaviour {
 	}
 
 	IEnumerator writeScore(Text scoreWrite, int scoreValue){
-		while (scoreValue > 0) {
+        if (scoreValue == 0)
+        {
+            scoreWrite.text += "L";
+        }
+        while (scoreValue > 0) {
 			scoreWrite.text += "\u00F6";
 			scoreValue--;
 			if (scoreValue == 0) {

@@ -8,7 +8,7 @@ public class EndOfLevelController : MonoBehaviour {
 
 	private Coroutine stayDetect;
 
-	private int[] pointsForWinning = {10, 5, 3, 0};
+	private int[] pointsForWinning = {5, 3, 1, 0};
 
 	public TurnManager turnManager;
 	// Use this for initialization
@@ -50,7 +50,7 @@ public class EndOfLevelController : MonoBehaviour {
 	{
 		PlayerPoints pPoints = other.gameObject.GetComponent<PlayerPoints>();
 		pPoints.playerPlaying = false;
-		pPoints.IncrementScore(pointsForWinning[pPoints.TurnManager.NumberOfPlayersWon()]);
+		pPoints.IncrementScore(pointsForWinning[pPoints.turnManager.NumberOfPlayersWon()]);
 		other.gameObject.SetActive(false);
 		turnManager.PlayerWon(turnManager.IndexOfPlayer(other.gameObject));
 		//Add the points

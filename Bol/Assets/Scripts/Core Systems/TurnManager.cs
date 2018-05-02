@@ -34,9 +34,14 @@ public class TurnManager : MonoBehaviour {
 		players = null;
 		GetPlayers();
 	}
-	
+
+    private void Update()
+    {
+        printPlayersWon();
+    }
+
     // Use this for initialization
-	void Start ()
+    void Start ()
 	{
         //firstWinningPlayerIndex = -1;
 		IComparer playerOrderer = new PlayerSorter();
@@ -97,12 +102,11 @@ public class TurnManager : MonoBehaviour {
 				if (AllPlayersWon())
 				{
 					// End the game!
-					Debug.Log("GAME HAS ENDED!");
-					SceneManager.LoadScene("GameEndScreen");
+					
 				}
-
-			}
-			yield return new WaitForSeconds(WAIT_TIME);
+                yield return new WaitForSeconds(WAIT_TIME);
+            }
+			//yield return new WaitForSeconds(WAIT_TIME);
 		}
 	}
 
@@ -148,8 +152,9 @@ public class TurnManager : MonoBehaviour {
             printPlayersWon();
 			if (playersWonCounter >= (players.Length-1))
 			{
-				// End the game!
-				yield break;
+                Debug.Log("GAME HAS ENDED!");
+                SceneManager.LoadScene("GameEndScreen");
+                yield break;
 			}
 		}
 		
@@ -277,8 +282,9 @@ public class TurnManager : MonoBehaviour {
 	public int NumberOfPlayersWon()
 	{
 		int numOfPlayersWon = 0;
-		foreach (var b in playersWon)
+		foreach (bool b in playersWon)
 		{
+            print(b);
 			if (b) numOfPlayersWon++;
 		}
         print("Num Players won: " + numOfPlayersWon);
@@ -288,6 +294,6 @@ public class TurnManager : MonoBehaviour {
 
     void printPlayersWon()
     {
-        print("[" + playersWon[0] + ", " + playersWon[1] + ", " + playersWon[2] + ", " + playersWon[3] + "]");
+        print("{"+ playersWon[0] + ", " + playersWon[1] + ", " + playersWon[2] + ", " + playersWon[3] + "}");
     }
 }
