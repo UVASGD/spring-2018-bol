@@ -100,8 +100,8 @@ public class TurnManager : MonoBehaviour {
 					SceneManager.LoadScene("GameEndScreen");
 				}
 
-				yield return new WaitForSeconds(WAIT_TIME);
 			}
+			yield return new WaitForSeconds(WAIT_TIME);
 		}
 	}
 
@@ -256,11 +256,15 @@ public class TurnManager : MonoBehaviour {
 	{
         Debug.Log("Player won: " + index);
         Debug.Log("PlayersWon.Length: " + playersWon.Length);
+		if (playersWon.Length == 0)
+		{
+			Debug.Log("Players Won was empty!");
+			playersWon = new bool[players.Length];
+		}
 		if (firstWinningPlayerIndex == -1)
 		{
 			firstWinningPlayerIndex = index;
 		}
-		Debug.Log("Getting index of " + index);
 		playersWon[index] = true;
 		Debug.Log("Player has won!");
 	}
