@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerPowerUpController : MonoBehaviour {
 
     PowerUp storedPowerUp = null;
+    UIUpdater uiUpdater;
 
     [SerializeField]
     bool hasPowerUp = false;
@@ -13,20 +14,9 @@ public class PlayerPowerUpController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
-	}
-
-    private void Timer()
-    {
-        timeLeft -= Time.deltaTime;
-        if (timeLeft < 0.05)
-        {
-            Debug.Log("Removing power up!");
-            storedPowerUp.UndoEffect();
-            storedPowerUp = null;
-            hasPowerUp = false;
-        }
+        uiUpdater = FindObjectOfType<UIUpdater>();
     }
+
 	
 	// Update is called once per frame
 	void Update () {
@@ -42,6 +32,7 @@ public class PlayerPowerUpController : MonoBehaviour {
             {
                 storedPowerUp = null;
                 hasPowerUp = false;
+                UpdateUI();
             }
         }
         else
@@ -64,6 +55,7 @@ public class PlayerPowerUpController : MonoBehaviour {
             storedPowerUp.Player = gameObject;
             hasPowerUp = true;
             Debug.Log(gameObject.name + ", " + storedPowerUp == null);
+            UpdateUI();
         }
     }
 
@@ -74,6 +66,7 @@ public class PlayerPowerUpController : MonoBehaviour {
             if (storedPowerUp.UndoEffect())
             {
                 storedPowerUp = null;
+                uiUpdater.UpdatePowerUpText(storedPowerUp);
             }
         }
     }
@@ -104,5 +97,10 @@ public class PlayerPowerUpController : MonoBehaviour {
     {
         Debug.Log("Getting powerup from " + gameObject.name + ", " + (storedPowerUp == null).ToString());
         return storedPowerUp;
+    }
+
+    public void UpdateUI()
+    {
+        uiUpdater.UpdatePowerUpText(storedPowerUp);
     }
 }
