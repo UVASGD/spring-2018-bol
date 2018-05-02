@@ -10,7 +10,7 @@ public class MoonJump : PowerUp
     }
 
     public MoonJump(){
-        endsOnTurn = false;
+        endsOnTurn = true;
     }
 
     // Update is called once per frame

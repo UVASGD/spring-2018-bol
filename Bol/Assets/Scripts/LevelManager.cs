@@ -19,11 +19,11 @@ public class LevelManager : MonoBehaviour {
 	}
 
 	void GoLevelOne(){
-		SceneManager.LoadScene("Towers Level");
+		SceneManager.LoadScene("Playground");
 	}
 
 	void GoLevelTwo(){
-		SceneManager.LoadScene("SanjanaLevel");
+		SceneManager.LoadScene("Airfield");
 	}
 
 	void GoLevelThree(){

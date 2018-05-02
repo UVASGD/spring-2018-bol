@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class TurnManager : MonoBehaviour {
 	
-	public int turnsAfterWinUntilEndGame = 5;
+	public int turnsAfterWinUntilEndGame = 3;
 
 	private GameObject[] players = null;
 	public UnifiedInput inputController;
@@ -74,8 +74,6 @@ public class TurnManager : MonoBehaviour {
 				PlayerPowerUpController curPlayerPowerUp = players[curPlayerIndex].GetComponent<PlayerPowerUpController>();
 				PlayerPoints curPlayerPoints = players[curPlayerIndex].GetComponent<PlayerPoints>();
 				
-
-				uiUpdater.UpdatePowerUpText(curPlayerPowerUp.GetStoredPowerUp());
 				
 				if (turnsSinceWin > turnsAfterWinUntilEndGame || AllPlayersWon())
 				{
@@ -134,7 +132,7 @@ public class TurnManager : MonoBehaviour {
 
 		curPlayerIndex = (curPlayerIndex + 1) % players.Length;
 		Camera.main.GetComponent<CameraMan>().ballLeaveFlight();
-		players[curPlayerIndex].GetComponent<Indicator>().setActive(true);
+		
 		// There might be a better way to do this...
 		foreach(GameObject powerUp in powerUps)
 		{
@@ -150,7 +148,7 @@ public class TurnManager : MonoBehaviour {
 			playersWonCounter++;
 			curPlayerIndex = (curPlayerIndex + 1) % players.Length;
 
-			if (playersWonCounter >= players.Length)
+			if (playersWonCounter >= (players.Length-1))
 			{
 				// End the game!
 				yield break;
@@ -168,11 +166,14 @@ public class TurnManager : MonoBehaviour {
 
 		curPlayerInput.enabled = true;
 		curPlayerControl.enabled = true;
+        curPlayerPowerUp.UpdateUI();
 
 		inputController.curInput = curPlayerInput;
 		inputController.curPlayer = curPlayerControl;
 		inputController.curPowerup = curPlayerPowerUp;
-		confirming = false;
+        players[curPlayerIndex].GetComponent<Indicator>().setActive(true);
+
+        confirming = false;
 	}
 
 	public int GetCurrentPlayerIndex(){
