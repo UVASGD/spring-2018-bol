@@ -38,6 +38,7 @@ public class TurnManager : MonoBehaviour {
     // Use this for initialization
 	void Start ()
 	{
+        //firstWinningPlayerIndex = -1;
 		IComparer playerOrderer = new PlayerSorter();
 		Array.Sort(players, playerOrderer);
 		foreach (GameObject player in players) {
@@ -84,7 +85,7 @@ public class TurnManager : MonoBehaviour {
 				}
 				
 				if (curPlayerControl.getPossibleTurnOver() &&
-				    (curPlayerRB.velocity.magnitude < minimumVelocity || !curPlayerPoints.PlayerPlaying))
+				    (curPlayerRB.velocity.magnitude < minimumVelocity || !curPlayerPoints.playerPlaying))
 				{
 					StartCoroutine(switchTurn(curPlayerControl, curPlayerRB, curPlayerInput, curPlayerPowerUp, curPlayerPoints));
 				}
@@ -106,7 +107,7 @@ public class TurnManager : MonoBehaviour {
 	}
 
 	IEnumerator switchTurn(PlayerControl curPlayerControl, Rigidbody curPlayerRB, PlayerInput curPlayerInput, PlayerPowerUpController curPlayerPowerUp, PlayerPoints curPlayerPoints) {
-		if (!confirming && curPlayerPoints.PlayerPlaying) {
+		if (!confirming && curPlayerPoints.playerPlaying) {
 			confirming = true; // We are currently confirming!
 			Debug.Log("Confirming!");
 			yield break;
@@ -131,8 +132,9 @@ public class TurnManager : MonoBehaviour {
 
 		int playersWonCounter = 0;
         
-        while (!players[curPlayerIndex].GetComponent<PlayerPoints>().PlayerPlaying)
+        while (!players[curPlayerIndex].GetComponent<PlayerPoints>().playerPlaying)
 		{
+            printPlayersWon();
 			Debug.Log("Skipping turns! Current player is: " + curPlayerIndex);
 			Debug.Log("First Winning Player was: " + firstWinningPlayerIndex);
 			if (curPlayerIndex == firstWinningPlayerIndex)
@@ -143,7 +145,7 @@ public class TurnManager : MonoBehaviour {
 			playersWon[curPlayerIndex] = true;
 			playersWonCounter++;
 			curPlayerIndex = (curPlayerIndex + 1) % players.Length;
-
+            printPlayersWon();
 			if (playersWonCounter >= (players.Length-1))
 			{
 				// End the game!
@@ -222,13 +224,13 @@ public class TurnManager : MonoBehaviour {
 
 	public GameObject GetCurrentPlayer()
 	{
-		GetPlayers();
+		//GetPlayers();
 		return players[curPlayerIndex];
 	}
 
 	public int GetNumPlayers()
 	{
-		GetPlayers();
+		//GetPlayers();
 
 		return players.Length;
 	}
@@ -254,6 +256,7 @@ public class TurnManager : MonoBehaviour {
 
 	public void PlayerWon(int index)
 	{
+        printPlayersWon();
         Debug.Log("Player won: " + index);
         Debug.Log("PlayersWon.Length: " + playersWon.Length);
 		if (playersWon.Length == 0)
@@ -261,23 +264,30 @@ public class TurnManager : MonoBehaviour {
 			Debug.Log("Players Won was empty!");
 			playersWon = new bool[players.Length];
 		}
-		if (firstWinningPlayerIndex == -1)
+		if (firstWinningPlayerIndex == -1 && NumberOfPlayersWon() == 0)
 		{
+            print("Changed firstWinningPlayer index to: " + index);
 			firstWinningPlayerIndex = index;
 		}
 		playersWon[index] = true;
+        printPlayersWon();
 		Debug.Log("Player has won!");
 	}
 
 	public int NumberOfPlayersWon()
 	{
 		int numOfPlayersWon = 0;
-		
 		foreach (var b in playersWon)
 		{
 			if (b) numOfPlayersWon++;
 		}
-
+        print("Num Players won: " + numOfPlayersWon);
+        printPlayersWon();
 		return numOfPlayersWon;
 	}
+
+    void printPlayersWon()
+    {
+        print("[" + playersWon[0] + ", " + playersWon[1] + ", " + playersWon[2] + ", " + playersWon[3] + "]");
+    }
 }

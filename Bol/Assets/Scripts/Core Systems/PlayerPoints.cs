@@ -6,7 +6,7 @@ public class PlayerPoints : MonoBehaviour
 {
     public int PointTotal;
 
-    public bool PlayerPlaying;
+    public bool playerPlaying;
 
     public static int[] Points;
 
@@ -17,7 +17,7 @@ public class PlayerPoints : MonoBehaviour
     // Use this for initialization
     void Start () {
         PointTotal = 0;
-        PlayerPlaying = true;
+        playerPlaying = true;
         if (TurnManager == null) TurnManager = FindObjectOfType<TurnManager>();
         Points = new int[TurnManager.GetNumPlayers()];
         playerIndex = TurnManager.IndexOfPlayer(gameObject);

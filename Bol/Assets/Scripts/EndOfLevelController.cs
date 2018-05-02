@@ -13,7 +13,7 @@ public class EndOfLevelController : MonoBehaviour {
 	public TurnManager turnManager;
 	// Use this for initialization
 	void Start () {
-		
+        if(turnManager == null) turnManager = FindObjectOfType<TurnManager>();
 
 	}
 
@@ -49,7 +49,7 @@ public class EndOfLevelController : MonoBehaviour {
 	private void PlayerStayed(Collider other)
 	{
 		PlayerPoints pPoints = other.gameObject.GetComponent<PlayerPoints>();
-		pPoints.PlayerPlaying = false;
+		pPoints.playerPlaying = false;
 		pPoints.IncrementScore(pointsForWinning[pPoints.TurnManager.NumberOfPlayersWon()]);
 		other.gameObject.SetActive(false);
 		turnManager.PlayerWon(turnManager.IndexOfPlayer(other.gameObject));
