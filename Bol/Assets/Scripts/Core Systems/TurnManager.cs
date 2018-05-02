@@ -257,7 +257,7 @@ public class TurnManager : MonoBehaviour {
 		{
 			firstWinningPlayerIndex = index;
 		}
-
+		Debug.Log("Getting index of " + index);
 		playersWon[index] = true;
 		Debug.Log("Player has won!");
 	}
