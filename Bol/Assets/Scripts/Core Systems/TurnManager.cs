@@ -140,10 +140,14 @@ public class TurnManager : MonoBehaviour {
 		}
 
 		int playersWonCounter = 0;
-		
-		while (!players[curPlayerIndex].GetComponent<PlayerPoints>().PlayerPlaying)
+        if (curPlayerIndex == firstWinningPlayerIndex)
+        {
+            turnsSinceWin++;
+            print("Turns Since Win: " + turnsSinceWin);
+        }
+        while (!players[curPlayerIndex].GetComponent<PlayerPoints>().PlayerPlaying)
 		{
-			if (curPlayerIndex == firstWinningPlayerIndex) turnsSinceWin++;
+            
 			playersWon[curPlayerIndex] = true;
 			playersWonCounter++;
 			curPlayerIndex = (curPlayerIndex + 1) % players.Length;
