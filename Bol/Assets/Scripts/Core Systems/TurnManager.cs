@@ -48,6 +48,7 @@ public class TurnManager : MonoBehaviour {
 		}
         powerUps = GameObject.FindGameObjectsWithTag("PowerUp");
 		playersWon = new bool[players.Length];
+        print("Num Players: " + players.Length);
 		for (int i = 0; i < playersWon.Length; i++) {
 			playersWon[i] = false;
 		}
@@ -253,6 +254,8 @@ public class TurnManager : MonoBehaviour {
 
 	public void PlayerWon(int index)
 	{
+        Debug.Log("Player won: " + index);
+        Debug.Log("PlayersWon.Length: " + playersWon.Length);
 		if (firstWinningPlayerIndex == -1)
 		{
 			firstWinningPlayerIndex = index;
