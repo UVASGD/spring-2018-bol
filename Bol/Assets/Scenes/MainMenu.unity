@@ -188,10 +188,21 @@ MonoBehaviour:
 
     William Wong
 
+    Andrew Murphy
+
+    Jeffery Wang
+
 
     Art:
 
-    (FILL NAMES HERE)'
+    Will Will
+
+    Sanjana Mendu
+
+
+    Playtesters:
+
+    Jenny Wu'
 --- !u!222 &61416473
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2795,7 +2806,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Design:\nRobert Anton\nDivya Karuturi\nSanjana Mendu\n\nAudio:\n\"Celtic
+  m_Text: "Design:\nRobert Anton\nDivya Karuturi\nSanjana Mendu\nWill Will\nPaul Aruthad\n\nAudio:\n\"Celtic
     Impulse\" Kevin MacLeod\n\"Truth in the Stones\" Kevin MacLeod\n(incompetech.com)\nLicensed
     under Creative Commons: By Attribution 3.0 License\r\nhttp://creativecommons.org/licenses/by/3.0/"
 --- !u!222 &1474576114

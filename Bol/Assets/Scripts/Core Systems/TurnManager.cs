@@ -85,17 +85,6 @@ public class TurnManager : MonoBehaviour {
 				if (curPlayerControl.getPossibleTurnOver() &&
 				    (curPlayerRB.velocity.magnitude < minimumVelocity || !curPlayerPoints.PlayerPlaying))
 				{
-					if (!curPlayerPoints.PlayerPlaying)
-					{
-						Debug.Log("Player has won!");
-						if (firstWinningPlayerIndex == -1)
-						{
-							firstWinningPlayerIndex = curPlayerIndex;
-							Debug.Log("Player" + (curPlayerIndex + 1) +" has won!");
-						}
-						playersWon[curPlayerIndex] = true;
-					}
-
 					StartCoroutine(switchTurn(curPlayerControl, curPlayerRB, curPlayerInput, curPlayerPowerUp, curPlayerPoints));
 				}
 				else
@@ -140,10 +129,16 @@ public class TurnManager : MonoBehaviour {
 		}
 
 		int playersWonCounter = 0;
-		
-		while (!players[curPlayerIndex].GetComponent<PlayerPoints>().PlayerPlaying)
+        
+        while (!players[curPlayerIndex].GetComponent<PlayerPoints>().PlayerPlaying)
 		{
-			if (curPlayerIndex == firstWinningPlayerIndex) turnsSinceWin++;
+			Debug.Log("Skipping turns! Current player is: " + curPlayerIndex);
+			Debug.Log("First Winning Player was: " + firstWinningPlayerIndex);
+			if (curPlayerIndex == firstWinningPlayerIndex)
+			{
+				turnsSinceWin++;
+				print("Turns Since Win: " + turnsSinceWin);
+			}
 			playersWon[curPlayerIndex] = true;
 			playersWonCounter++;
 			curPlayerIndex = (curPlayerIndex + 1) % players.Length;
@@ -254,5 +249,28 @@ public class TurnManager : MonoBehaviour {
 	public bool PlayerHasWon()
 	{
 		return firstWinningPlayerIndex != -1;
+	}
+
+	public void PlayerWon(int index)
+	{
+		if (firstWinningPlayerIndex == -1)
+		{
+			firstWinningPlayerIndex = index;
+		}
+
+		playersWon[index] = true;
+		Debug.Log("Player has won!");
+	}
+
+	public int NumberOfPlayersWon()
+	{
+		int numOfPlayersWon = 0;
+		
+		foreach (var b in playersWon)
+		{
+			if (b) numOfPlayersWon++;
+		}
+
+		return numOfPlayersWon;
 	}
 }
