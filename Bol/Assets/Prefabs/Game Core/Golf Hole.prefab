@@ -212,3 +212,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c41ae1f8b64288d43821a8f062328341, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turnManager: {fileID: 114520178661761594, guid: be033ae570255374bbf383eb3326146b,
+    type: 2}
