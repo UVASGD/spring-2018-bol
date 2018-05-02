@@ -16,10 +16,11 @@ public class LevelManager : MonoBehaviour {
 		levelOne.onClick.AddListener (() => GoLevelOne ());
 		levelTwo.onClick.AddListener (() => GoLevelTwo ());
 		levelThree.onClick.AddListener (() => GoLevelThree ());
-	}
+        levelFour.onClick.AddListener(() => GoLevelFour());
+    }
 
 	void GoLevelOne(){
-		SceneManager.LoadScene("Playground");
+		SceneManager.LoadScene("Firing Range");
 	}
 
 	void GoLevelTwo(){
@@ -29,5 +30,9 @@ public class LevelManager : MonoBehaviour {
 	void GoLevelThree(){
 		SceneManager.LoadScene ("Playground");
 	}
+    void GoLevelFour()
+    {
+        SceneManager.LoadScene("Door");
+    }
 
 }
